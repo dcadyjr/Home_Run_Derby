@@ -1,8 +1,6 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-
-
-
+var randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
 
 var ball = {
 	position: {x:500, y:300},
@@ -13,9 +11,9 @@ var ball = {
  			ball.position.y += 5;
  		} else if (ball.direction === "hit"){
  			ball.position.y -= 5;
- 		}
- 		// console.log(ball.position.y);
- 		
+ 			ball.position.x += randomNumber;
+ 			console.log(randomNumber);
+  		}	
 	},
 	draw: function(){
 		ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -32,11 +30,11 @@ var ball = {
 var animateCanvas = function(){
  
     ball.move();
-
   	ball.draw();
+
   	window.requestAnimationFrame(animateCanvas);
 }
- 	animateCanvas();
+animateCanvas();
 
 document.addEventListener("keydown", function(){
  	var key = event.which;
