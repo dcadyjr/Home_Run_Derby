@@ -9,7 +9,7 @@ var ball = {
 	direction: "",
 	move: function(){
  //move the ball down the Y axis
- 		ball.position.y++
+ 		ball.position.y += 5;
  		console.log(ball.position.y);
 	},
 	draw: function(){
