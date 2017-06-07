@@ -6,11 +6,16 @@ var ctx = canvas.getContext("2d");
 
 var ball = {
 	position: {x:500, y:300},
-	direction: "",
+	direction: "pitch",
 	move: function(){
  //move the ball down the Y axis
- 		ball.position.y += 5;
- 		console.log(ball.position.y);
+ 		if (ball.direction === "pitch"){
+ 			ball.position.y += 5;
+ 		} else if (ball.direction === "hit"){
+ 			ball.position.y -= 5;
+ 		}
+ 		// console.log(ball.position.y);
+ 		
 	},
 	draw: function(){
 		ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -24,11 +29,22 @@ var ball = {
 	ball.draw();
 	ball.move();
 
-	var animateCanvas = function(){
+var animateCanvas = function(){
  
     ball.move();
 
   	ball.draw();
   	window.requestAnimationFrame(animateCanvas);
 }
- animateCanvas();
+ 	animateCanvas();
+
+document.addEventListener("keydown", function(){
+ 	var key = event.which;
+ 		if (key === 32){
+ 			ball.direction = "hit"
+ 			ball.draw();
+			ball.move();
+ 		} else {
+
+ 		}
+ })
