@@ -27,10 +27,12 @@ var ball = {
   				ball.position.y -= 5;
   				ball.position.x += randomNumber;
   				// if (ball.position.y <=  )
-  		}	else if (ball.direction === "strike") {
-  				ball.position.x === 600;
-  				ball.position.y === 570;
-
+  		}	 
+  		if (ball.position.y === 646) {
+  				ball.position.x = 600;
+  				ball.position.y = 570;
+				console.log("strike");
+				totalOuts = totalOuts += 1;
   		}
 	},
 	draw: function(){
@@ -39,7 +41,6 @@ var ball = {
 		ctx.fillStyle = 'white';
 		ctx.arc(ball.position.x, ball.position.y, 3, 0, Math.PI*2);
 		ctx.fill();
-
 	},
 
 }
@@ -52,25 +53,29 @@ var animateCanvas = function(){
   	window.requestAnimationFrame(animateCanvas);
 }
 animateCanvas();
-  // && ball.position.y >= 635
+
+ 
 document.addEventListener("keydown", function(){
  	var key = event.which;
- 		if (key === 72 && ball.position.y >= 642 && ball.position.y <= 644) {
- 			console.log(ball.position.y);
+ 	var swingTime = ball.position.y;
+ 		if (key === 72 && swingTime >= 642 && swingTime <= 644) {
+ 			console.log(swingTime);
  			ball.direction = "HR";
  			ball.draw();
 			ball.move();
 			homeRun = homeRun += 1;
 			console.log("home run #" + homeRun);
- 		} else if (key === 72 && ball.position.y >= 640 && key === 72 && ball.position.y <= 641 || key === 72 && ball.position) {
- 				ball.direction = "out";
- 				console.log("out", ball.position.y, totalOuts);
- 		} else if (key === 72) {
- 			console.log(ball.position.y);
- 		}	else if (key === 72 && ball.position.y > 645){
- 				ball.direction = "strike";
- 				ball.draw();
-				ball.move();
- 				console.log("strike");
+ 		} else if (key === 72 && swingTime === 640 || key === 72 && swingTime === 641 || key === 72 && swingTime === 645 || key === 72 && swingTime === 646) {
+ 			ball.direction = "out";
+ 			ball.draw();
+			ball.move();
+ 			totalOuts = totalOuts += 1;
+ 			console.log("out", swingTime, totalOuts);
+ 		} 	else if (key === 72 && swingTime <= 639 || key === 72 && swingTime > 646) {
+ 			ball.direction = "strike";
+ 			ball.draw();
+			ball.move();
+			totalOuts = totalOuts += 1;
+			console.log("strike", swingTime);
  		}
  })
