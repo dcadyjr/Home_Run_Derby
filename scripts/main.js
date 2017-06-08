@@ -3,8 +3,7 @@ var ctx = canvas.getContext("2d");
 var randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
 var homeRun = 0;
 var totalOuts = 0;
-
-
+var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);
 // var ballStop = function(){
 // 	ball.position.y += 0;
 // 	ball.position.y -= 0;
@@ -30,10 +29,12 @@ var ball = {
   		if (ball.position.y === 646) {
   				ball.position.x = 600;
   				ball.position.y = 570;
+  			//ball.position.x += 0?
 				console.log("strike");
 				totalOuts = totalOuts += 1;
-  		}
-  		if (ball.position.y < 550 && ball.position.y > 400 && ball.direction === "out"){
+  		}	
+  			// console.log(ball.direction, ball.position.y, randomNumberY);
+  		if (ball.direction === "out" && ball.position.y > (randomNumberY - 5) && ball.position.y < (randomNumberY + 5)) {
   				console.log("woohoo", ball.position.y);
   				ball.direction = "stop";	 				
   			}
