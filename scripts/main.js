@@ -4,14 +4,11 @@ var randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
 var homeRun = 0;
 var totalOuts = 0;
 
-// var drawBackground = function() {
-// 	var img = new Image();
-// 	img.onload = function() {
-// 		ctx.drawImage(img, 0, 0);
-// 	};
-// 	img.src = "./images/bad_news_stadium.png"
+
+// var ballStop = function(){
+// 	ball.position.y += 0;
+// 	ball.position.y -= 0;
 // }
-// drawBackground ();
 
 var ball = {
 	position: {x:600, y:570},
@@ -23,10 +20,12 @@ var ball = {
  		} else if (ball.direction === "HR"){
  				ball.position.y -= 5;
  				ball.position.x += randomNumber;
-  		}	else if (ball.direction === "out") {
+  		} else if (ball.direction === "out") {
   				ball.position.y -= 5;
   				ball.position.x += randomNumber;
-  				// if (ball.position.y <=  )
+  		} else if (ball.direction === "stop") {
+  				ball.position.y += 0;
+  				ball.position.x -= 0;
   		}	 
   		if (ball.position.y === 646) {
   				ball.position.x = 600;
@@ -34,6 +33,10 @@ var ball = {
 				console.log("strike");
 				totalOuts = totalOuts += 1;
   		}
+  		if (ball.position.y < 550 && ball.position.y > 400 && ball.direction === "out"){
+  				console.log("woohoo", ball.position.y);
+  				ball.direction = "stop";	 				
+  			}
 	},
 	draw: function(){
 		ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -70,7 +73,7 @@ document.addEventListener("keydown", function(){
  			ball.draw();
 			ball.move();
  			totalOuts = totalOuts += 1;
- 			console.log("out", swingTime, totalOuts);
+ 			// console.log("out", swingTime, totalOuts);
  		} 	else if (key === 72 && swingTime <= 639 || key === 72 && swingTime > 646) {
  			ball.direction = "strike";
  			ball.draw();
