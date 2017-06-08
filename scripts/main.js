@@ -28,8 +28,11 @@ var ball = {
 	draw: function(){
 		ctx.clearRect(0,0,canvas.width,canvas.height);
 		ctx.beginPath();
-		ctx.arc(ball.position.x, ball.position.y, 5, 0, Math.PI*2);
-		ctx.stroke();
+		ctx.fillStyle = 'white';
+		ctx.arc(ball.position.x, ball.position.y, 3, 0, Math.PI*2);
+		ctx.fill();
+
+		
 
 	},
 
