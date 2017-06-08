@@ -36,12 +36,13 @@ var ball = {
   				setTimeout(newPitch, 2000);
   			}
 
-  		if (ball.position.y === 647) {
+  		if (ball.position.y > 646) {
 
   				ball.direction = "stop";
-				
+				ball.position.x = 600;
+				ball.position.y = 570;
 				totalOuts = totalOuts += 1;
-				console.log(totalOuts);
+				console.log("strike looking",  "out #" + totalOuts);
   		}	
   			// console.log(ball.direction, ball.position.y, randomNumberY);
   		if (ball.direction === "out" && ball.position.y > (randomNumberY - 5) && ball.position.y < (randomNumberY + 5)) {
@@ -89,13 +90,13 @@ document.addEventListener("keydown", function(){
  			ball.draw();
 			ball.move();
  			totalOuts = totalOuts += 1;
- 			console.log("out", swingTime, totalOuts);
- 		} 	else if (key === 72 && swingTime <= 639 || key === 72 && swingTime > 646) {
- 			ball.direction = "strike";
+ 			console.log("swinging out", "out #" + totalOuts);
+ 		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {
+ 			ball.direction = "stop";
  			ball.draw();
 			ball.move();
 			totalOuts = totalOuts += 1;
-			// console.log("strike", swingTime);
+			console.log("swingingstrike", "out #" + totalOuts);
  		}
  })
 
