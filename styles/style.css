@@ -1,3 +1,12 @@
+body{
+	background-image: url(../images/bad_news_stadium.png);
+	background-size: 1200px 750px;
+	background-repeat: no-repeat;
+
+}
+
 #myCanvas {
-	background-color: orange;
+
+	/*width: 1200px;
+	height: 750px;*/
 }

@@ -2,6 +2,16 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
 
+
+// var drawBackground = function() {
+// 	var img = new Image();
+// 	img.onload = function() {
+// 		ctx.drawImage(img, 0, 0);
+// 	};
+// 	img.src = "./images/bad_news_stadium.png"
+// }
+// drawBackground ();
+
 var ball = {
 	position: {x:500, y:300},
 	direction: "pitch",
@@ -18,7 +28,7 @@ var ball = {
 	draw: function(){
 		ctx.clearRect(0,0,canvas.width,canvas.height);
 		ctx.beginPath();
-		ctx.arc(ball.position.x, ball.position.y, 10, 0, Math.PI*2);
+		ctx.arc(ball.position.x, ball.position.y, 5, 0, Math.PI*2);
 		ctx.stroke();
 
 	},
