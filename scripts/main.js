@@ -10,6 +10,7 @@ var highScore = 0;//variable to hold the current high score
 
 var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
 	 
+   randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
    randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
 
 	  ball.position.x = 600;//sets the position of the ball on the x axis to 600
@@ -17,17 +18,17 @@ var newPitch = function (){//starts a function that make a new pitch happen afte
 
   	ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
     
-    $(".playResult").html("");
+    $(".playResult").html("");//clears the playResult part of the scoreboard
 }
 
-var reset = function() {
-  $("#homerunValue").html("");
-  $("#outValue").html("");
-  homeRun = 0;
-  totalOuts = 0;
-  $(".playResult").html("");
+var reset = function() {//variable for game reset button
+  $("#homerunValue").html("");//clears the home runs score from scoreboard
+  $("#outValue").html("");//clears the out score from the scoreboard
+  homeRun = 0;//resets homerun variable to 0
+  totalOuts = 0;//resets the total outs variable to 0
+  $(".playResult").html("");//clears the play result part of the scoreboard
   
-  newPitch();
+  newPitch();//runs the new pitch function
 } 
 
 // this is what makes the ball move
