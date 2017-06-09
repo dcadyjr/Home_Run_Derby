@@ -64,3 +64,8 @@
 	margin-bottom: -9px;
 
 }
+
+.reset{
+	z-index: 5;
+	position: absolute;
+}

@@ -20,6 +20,16 @@ var newPitch = function (){//starts a function that make a new pitch happen afte
     $(".playResult").html("");
 }
 
+var reset = function() {
+  $("#homerunValue").html("");
+  $("#outValue").html("");
+  homeRun = 0;
+  totalOuts = 0;
+  $(".playResult").html("");
+  
+  newPitch();
+} 
+
 // this is what makes the ball move
 var ball = {//variable ball that holds that is an object with properties for the baseball.
 	position: {x:600, y:570},//holds the x and y coordinates of the ball. starts at x600 and y500
@@ -134,10 +144,9 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
  		}
  })
 
-
-//game reset
-// homeRun = 0;
-// totalOuts = 0;
+$(".reset").click(function(){
+    reset();
+});
 
 
 
