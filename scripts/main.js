@@ -4,32 +4,44 @@ var randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);//variable h
 var homeRun = 0;//varialbe to hold the number of homeruns for the player
 var totalOuts = 0;//variable to hold the total number of outs for the player
 var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variable that holds a random number between 400 and 550. used belwo to randomize the depth of "out" hits.
+var randomPitchSpeed = 1;
+
 
 var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
-	
-	ball.position.x = 600;//sets the position of the ball on the x axis to 600
+	 
+   randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
+   console.log(randomPitchSpeed);
+
+	  ball.position.x = 600;//sets the position of the ball on the x axis to 600
   	ball.position.y = 570;//sets the postiion of the ball on the y axis to 570
 
   	ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
+    
 }
 
+// this is what makes the ball move
 var ball = {//variable ball that holds that is an object with properties for the baseball.
 	position: {x:600, y:570},//holds the x and y coordinates of the ball. starts at x600 and y500
 	direction: "pitch",//denotes what the ball is doing.  different states make the ball do different things
 	move: function() {//start of the funtion that is responsible for the movement of the ball.
- 		if (ball.direction === "pitch") {//condition statement that checks if the direction of the ball is "pitch".
- 				ball.position.y += 1;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
+ 		//Pitch movement
+    if (ball.direction === "pitch") {//condition statement that checks if the direction of the ball is "pitch".	
+          ball.position.y += randomPitchSpeed;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
+        //HR movement
  		} else if (ball.direction === "HR") {//condition statement that checks if the direction of the ball is HR(home run)
- 				ball.position.y -= 5;//moves the ball position by 5 pixels up the y axis as long as direction is HR
- 				ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
+ 				 ball.position.y -= 5;//moves the ball position by 5 pixels up the y axis as long as direction is HR
+ 				 ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
+        //out movement
   		} else if (ball.direction === "out") {//conditional statement to check if the direction of the ball is "out"
   				ball.position.y -= 5;//moves the position of the ball up the y axis by 5
   				ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
+          //stop movement
   		} else if (ball.direction === "stop") {//conditional statement checks to see if the direction of the ball is "stop"
   				ball.position.y += 0;//makes the ball stop moving on the y axis
   				ball.position.x -= 0;//makes the ball stop moving on the x axis
   				// console.log(ball.direction);
   				setTimeout(newPitch, 2000);//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
+          //strike movement
   		} else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
 
   				setTimeout(newPitch, 2000);//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
@@ -38,10 +50,10 @@ var ball = {//variable ball that holds that is an object with properties for the
   		if (ball.position.y > 646) {//checks to see if the position of the ball on the y axis is greater than 646
 
   				ball.direction = "stop";//changes the ball direction to stop
-				ball.position.x = 600;//sets the x position of the ball to 600
-				ball.position.y = 570;//sets the y position of the ball to 570
-				totalOuts = totalOuts += 1;//increases the total outs by 1
-				console.log("strike looking",  "out #" + totalOuts);
+				  ball.position.x = 600;//sets the x position of the ball to 600
+				  ball.position.y = 570;//sets the y position of the ball to 570
+				  totalOuts = totalOuts += 1;//increases the total outs by 1
+				  console.log("strike looking",  "out #" + totalOuts);
   		}	
   			// console.log(ball.direction, ball.position.y, randomNumberY);
   		if (ball.direction === "out" && ball.position.y > (randomNumberY - 5) && ball.position.y < (randomNumberY + 5)) {//checks if the ball direction is out and if the ball postion y is greater than or less than a radnom number between 400 and 550
@@ -69,7 +81,7 @@ var animateCanvas = function(){//function to animate the canvas
     ball.move();//runs the move function from the ball object
   	ball.draw();//runs the draw function from the draw object
 
-  	window.requestAnimationFrame(animateCanvas);.//runs the animate canvas 60 fps
+  	window.requestAnimationFrame(animateCanvas);//runs the animate canvas 60 fps
 }
 animateCanvas();//runs the animate canvas function
 
