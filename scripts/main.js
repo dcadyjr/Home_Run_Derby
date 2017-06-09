@@ -27,7 +27,7 @@ var reset = function() {//variable for game reset button
   homeRun = 0;//resets homerun variable to 0
   totalOuts = 0;//resets the total outs variable to 0
   $(".playResult").html("");//clears the play result part of the scoreboard
-  
+  $(".reset").hide();
   newPitch();//runs the new pitch function
 } 
 
@@ -87,7 +87,7 @@ var ball = {//variable ball that holds that is an object with properties for the
           console.log("stop");
           ball.direction = "gameOver";
           $(".playResult").html("GAME OVER");
-          
+          $(".reset").show();
       }    
 	},
 	draw: function(){//this function draws the ball
