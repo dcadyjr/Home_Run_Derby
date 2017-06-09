@@ -124,7 +124,7 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
 			ball.move();//runs the move function in the ball object
 			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
       $("#outValue").html(totalOuts);
-      $(".playResult").html("OUT!!!");
+      $(".playResult").html("SWING AND A MISS!!!");
 			console.log("swingingstrike", "out #" + totalOuts);
  		}
  })
