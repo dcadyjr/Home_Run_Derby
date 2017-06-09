@@ -4,7 +4,8 @@ var randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);//variable h
 var homeRun = 0;//varialbe to hold the number of homeruns for the player
 var totalOuts = 0;//variable to hold the total number of outs for the player
 var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variable that holds a random number between 400 and 550. used belwo to randomize the depth of "out" hits.
-var randomPitchSpeed = 1;
+var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in newPitch function
+var highScore = 0;//variable to hold the current high score
 
 
 var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
@@ -108,7 +109,11 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
 			ball.move();//runs the move function in the ball object
 			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
       $("#homerunValue").html(homeRun);
-      $(".playResult").html("HOME RUN!!!");
+      $(".playResult").html("HOME RUN!!!"); 
+        if (highScore < homeRun) {
+        highScore = homeRun;
+        $("#highscoreValue").html(highScore);
+      }
 			console.log("home run #" + homeRun);
  		} else if (key === 72 && swingTime === 640 || key === 72 && swingTime === 641 || key === 72 && swingTime === 645 || key === 72 && swingTime === 646) {//conditional for an out.  looks to see if the H key is pressed while the ball is at certain pixels.
  			ball.direction = "out";//changes the direction property in the ball object to "out"
@@ -128,6 +133,12 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
 			console.log("swingingstrike", "out #" + totalOuts);
  		}
  })
+
+
+//game reset
+// homeRun = 0;
+// totalOuts = 0;
+
 
 
 
