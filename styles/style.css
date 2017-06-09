@@ -15,7 +15,7 @@
 
 .scoreboard{
 	background: black;
-	width: 310px;
+	width: 340px;
 	height: 150px;
 	z-index: 5;
 	position: absolute;
@@ -24,23 +24,42 @@
 }
 
 .infoScreen{
-	height: 77px;
-	width: 155px;
-	background-color: blue;
+	height: 100px;
+	width: 170px;
+	background-color: rgb(35, 69, 21);
 	float: left;
+	
+	
 }
  .currentScore{
- 	height: 77px;
-	width: 155px;
-	background-color: red;
+ 	height: 100px;
+	width: 170px;
+	background-color: rgb(35, 69, 21);
 	float: right;
+	
+	
  }
 
  .playResult {
- 	height: 78px;
-	width: 310px;
-	background-color: pink;
+ 	height: 50px;
+	width: 340px;
+	background-color: black;
 	margin-top: 20px;
 	clear: both;
+	color: white;
+	font-family: 'VT323', monospace;
+	font-size: 40px;
+	text-align: center;
+
+
  }
 
+.innerboards {
+	height: 38px;
+	width: 77px;
+	background-color: rgb(35, 69, 21);
+	border: 1px solid red;
+	color: white;
+	display: inline-block;
+
+}

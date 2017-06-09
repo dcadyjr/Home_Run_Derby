@@ -16,6 +16,7 @@ var newPitch = function (){//starts a function that make a new pitch happen afte
 
   	ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
     
+    $(".playResult").html("");
 }
 
 // this is what makes the ball move
@@ -56,7 +57,9 @@ var ball = {//variable ball that holds that is an object with properties for the
 				  ball.position.x = 600;//sets the x position of the ball to 600
 				  ball.position.y = 570;//sets the y position of the ball to 570
 				  totalOuts = totalOuts += 1;//increases the total outs by 1
-				  console.log("strike looking",  "out #" + totalOuts);
+				  $("#outValue").html(totalOuts);
+          $(".playResult").html("OUT!!!");
+          console.log("strike looking",  "out #" + totalOuts);
   		}	
   			// console.log(ball.direction, ball.position.y, randomNumberY);
   		if (ball.direction === "out" && ball.position.y > (randomNumberY - 5) && ball.position.y < (randomNumberY + 5)) {//checks if the ball direction is out and if the ball postion y is greater than or less than a radnom number between 400 and 550
@@ -71,7 +74,8 @@ var ball = {//variable ball that holds that is an object with properties for the
       if (totalOuts === 10){
           console.log("stop");
           ball.direction = "gameOver";
-          alert("game over");
+          $(".playResult").html("GAME OVER");
+          
       }    
 	},
 	draw: function(){//this function draws the ball
@@ -84,14 +88,14 @@ var ball = {//variable ball that holds that is an object with properties for the
 
 }
 
-// var animateCanvas = function(){//function to animate the canvas
+var animateCanvas = function(){//function to animate the canvas
  
-//     ball.move();//runs the move function from the ball object
-//   	ball.draw();//runs the draw function from the draw object
+    ball.move();//runs the move function from the ball object
+  	ball.draw();//runs the draw function from the draw object
 
-//   	window.requestAnimationFrame(animateCanvas);//runs the animate canvas 60 fps
-// }
-// animateCanvas();//runs the animate canvas function
+  	window.requestAnimationFrame(animateCanvas);//runs the animate canvas 60 fps
+}
+animateCanvas();//runs the animate canvas function
 
  
 document.addEventListener("keydown", function(){//adds the event listener looking for keydown
@@ -103,18 +107,24 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
  			ball.draw();//runs the draw function in the ball object
 			ball.move();//runs the move function in the ball object
 			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
+      $("#homerunValue").html(homeRun);
+      $(".playResult").html("HOME RUN!!!");
 			console.log("home run #" + homeRun);
  		} else if (key === 72 && swingTime === 640 || key === 72 && swingTime === 641 || key === 72 && swingTime === 645 || key === 72 && swingTime === 646) {//conditional for an out.  looks to see if the H key is pressed while the ball is at certain pixels.
  			ball.direction = "out";//changes the direction property in the ball object to "out"
  			ball.draw();//runs the draw function in the ball object
 			ball.move();//runs the move function in the ball object
  			totalOuts = totalOuts += 1;//adds 1 to the Total outs variable which keeps track of how many outs there are
- 			console.log("swinging out", "out #" + totalOuts);
+ 			$("#outValue").html(totalOuts);
+      $(".playResult").html("OUT!!!");
+      console.log("swinging out", "out #" + totalOuts);
  		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
  			ball.direction = "stop";//changes the direction in the ball object to stop
  			ball.draw();//runs the draw function in the ball object
 			ball.move();//runs the move function in the ball object
 			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
+      $("#outValue").html(totalOuts);
+      $(".playResult").html("OUT!!!");
 			console.log("swingingstrike", "out #" + totalOuts);
  		}
  })
