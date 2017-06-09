@@ -24,19 +24,23 @@
 }
 
 .infoScreen{
-	height: 25px;
-	width: 25px;
+	height: 77px;
+	width: 155px;
 	background-color: blue;
+	float: left;
 }
  .currentScore{
- 	height: 25px;
-	width: 25px;
+ 	height: 77px;
+	width: 155px;
 	background-color: red;
+	float: right;
  }
 
  .playResult {
- 	height: 25px;
-	width: 25px;
+ 	height: 78px;
+	width: 310px;
 	background-color: pink;
+	margin-top: 20px;
+	clear: both;
  }
 
