@@ -84,14 +84,14 @@ var ball = {//variable ball that holds that is an object with properties for the
 
 }
 
-var animateCanvas = function(){//function to animate the canvas
+// var animateCanvas = function(){//function to animate the canvas
  
-    ball.move();//runs the move function from the ball object
-  	ball.draw();//runs the draw function from the draw object
+//     ball.move();//runs the move function from the ball object
+//   	ball.draw();//runs the draw function from the draw object
 
-  	window.requestAnimationFrame(animateCanvas);//runs the animate canvas 60 fps
-}
-animateCanvas();//runs the animate canvas function
+//   	window.requestAnimationFrame(animateCanvas);//runs the animate canvas 60 fps
+// }
+// animateCanvas();//runs the animate canvas function
 
  
 document.addEventListener("keydown", function(){//adds the event listener looking for keydown

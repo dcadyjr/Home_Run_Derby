@@ -1,5 +1,5 @@
-body{
-	
+#container{
+	position: relative;
 }
 
 #myCanvas {
@@ -9,4 +9,34 @@ body{
 	background-repeat: no-repeat;
 	height: 750px;
 	width: 1200px;
+	position: absolute;
+	z-index: 0;
 }
+
+.scoreboard{
+	background: black;
+	width: 310px;
+	height: 150px;
+	z-index: 5;
+	position: absolute;
+	top: 55px;
+	left: 37%;
+}
+
+.infoScreen{
+	height: 25px;
+	width: 25px;
+	background-color: blue;
+}
+ .currentScore{
+ 	height: 25px;
+	width: 25px;
+	background-color: red;
+ }
+
+ .playResult {
+ 	height: 25px;
+	width: 25px;
+	background-color: pink;
+ }
+
