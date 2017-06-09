@@ -74,27 +74,27 @@ var animateCanvas = function(){//function to animate the canvas
 animateCanvas();//runs the animate canvas function
 
  
-document.addEventListener("keydown", function(){
- 	var key = event.which;
- 	var swingTime = ball.position.y;
- 		if (key === 72 && swingTime >= 642 && swingTime <= 644) {
+document.addEventListener("keydown", function(){//adds the event listener looking for keydown
+ 	var key = event.which;//variable that holds the key that is pressed
+ 	var swingTime = ball.position.y;//a variable that holds the position of ball position y
+ 		if (key === 72 && swingTime >= 642 && swingTime <= 644) {//conditional for HR. listens ff the h key is pressed while the ball is between 642 and 644 pixels
  			// console.log(swingTime);
- 			ball.direction = "HR";
- 			ball.draw();
-			ball.move();
-			homeRun = homeRun += 1;
+ 			ball.direction = "HR";//changes the direction property in the ball object to HR
+ 			ball.draw();//runs the draw function in the ball object
+			ball.move();//runs the move function in the ball object
+			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
 			console.log("home run #" + homeRun);
- 		} else if (key === 72 && swingTime === 640 || key === 72 && swingTime === 641 || key === 72 && swingTime === 645 || key === 72 && swingTime === 646) {
- 			ball.direction = "out";
- 			ball.draw();
-			ball.move();
- 			totalOuts = totalOuts += 1;
+ 		} else if (key === 72 && swingTime === 640 || key === 72 && swingTime === 641 || key === 72 && swingTime === 645 || key === 72 && swingTime === 646) {//conditional for an out.  looks to see if the H key is pressed while the ball is at certain pixels.
+ 			ball.direction = "out";//changes the direction property in the ball object to "out"
+ 			ball.draw();//runs the draw function in the ball object
+			ball.move();//runs the move function in the ball object
+ 			totalOuts = totalOuts += 1;//adds 1 to the Total outs variable which keeps track of how many outs there are
  			console.log("swinging out", "out #" + totalOuts);
- 		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {
- 			ball.direction = "stop";
- 			ball.draw();
-			ball.move();
-			totalOuts = totalOuts += 1;
+ 		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
+ 			ball.direction = "stop";//changes the direction in the ball object to stop
+ 			ball.draw();//runs the draw function in the ball object
+			ball.move();//runs the move function in the ball object
+			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
 			console.log("swingingstrike", "out #" + totalOuts);
  		}
  })
