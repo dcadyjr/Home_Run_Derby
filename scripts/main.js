@@ -10,7 +10,6 @@ var randomPitchSpeed = 1;
 var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
 	 
    randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
-   console.log(randomPitchSpeed);
 
 	  ball.position.x = 600;//sets the position of the ball on the x axis to 600
   	ball.position.y = 570;//sets the postiion of the ball on the y axis to 570
@@ -42,7 +41,11 @@ var ball = {//variable ball that holds that is an object with properties for the
   				// console.log(ball.direction);
   				setTimeout(newPitch, 2000);//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
           //strike movement
-  		} else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
+  		} else if (ball.direction === "gameOver") {//looks to see if ball direction is set to gameOver
+          ball.position.y += 0;//makes the ball stop moving on the y axis
+          ball.position.x -= 0;//makes the ball stop moving on the x axis
+      }
+        else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
 
   				setTimeout(newPitch, 2000);//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
   			}
@@ -65,6 +68,11 @@ var ball = {//variable ball that holds that is an object with properties for the
   				ball.direction = "stop";//changes the ball direction to stop
   				// console.log(ball.direction, ball.position.y);
   		}
+      if (totalOuts === 10){
+          console.log("stop");
+          ball.direction = "gameOver";
+          alert("game over");
+      }    
 	},
 	draw: function(){//this function draws the ball
 		ctx.clearRect(0,0,canvas.width,canvas.height);//clears the canvas
@@ -110,6 +118,7 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
 			console.log("swingingstrike", "out #" + totalOuts);
  		}
  })
+
 
 
 
