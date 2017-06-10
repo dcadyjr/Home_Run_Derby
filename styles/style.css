@@ -98,7 +98,18 @@
     text-decoration: none;
 }
 
-.pitcher {
+#pitcher {
+	left: 594px;
+	top: 571px;
+	width: 25px;
+	height: 26px;
+	background-image: url(../images/BaseballSheet1.png);
+	z-index: 3;
+	position: absolute;
+	background-position: 295px -5px;
+}
+
+.pitchAnimate {
 	left: 594px;
 	top: 571px;
 	width: 25px;
@@ -108,10 +119,9 @@
 	position: absolute;
 	animation-name: pitchIt;
 	animation-duration: .3s;
-	animation-timing-function: ease-in-out;
+	animation-timing-function: steps(4);
 	animation-fill-mode: forwards;
 	animation-iteration-count: 1;
-	background-position: 41px 50px;
 }
 
 @keyframes pitchIt {

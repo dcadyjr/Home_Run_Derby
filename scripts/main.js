@@ -6,32 +6,15 @@ var totalOuts = 0;//variable to hold the total number of outs for the player
 var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variable that holds a random number between 400 and 550. used belwo to randomize the depth of "out" hits.
 var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in newPitch function
 var highScore = 0;//variable to hold the current high score
-  //animation variables
-// var spriteSheet = new Image();
-// spriteSheet.src = "images/BaseballSheet1.png";
 
-// spriteSheet.addEventListener("load", loadImage, false);
-// var shift = 0;
-// var frameWidth = 300;
-// var frameHeight = 300;
-// var totalFrames = 24;
-// var currentFrame = 0;
+var pitchAnimation = function() {
 
-// function loadImage (e) {
-//   animate();
-// }
-
- 
-//  function animate () {
-  
-//     ctx.drawImage(spriteSheet, 0, 0, 300, 120, 25, 300, 300);
-
-
-//  } 
-    
-
-
-//animations
+        $("#pitcher").addClass("pitchAnimate");
+        
+        window.setTimeout(function() {
+        $("#pitcher").removeClass("pitchAnimate");
+        }, 500);
+} 
 
 
 var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
@@ -63,7 +46,11 @@ var ball = {//variable ball that holds that is an object with properties for the
 	direction: "pitch",//denotes what the ball is doing.  different states make the ball do different things
 	move: function() {//start of the funtion that is responsible for the movement of the ball.
  		//Pitch movement
-    if (ball.direction === "pitch") {//condition statement that checks if the direction of the ball is "pitch".	
+    if (ball.direction === "pitch") {//condition statement that checks if the direction of the ball is "pitch".
+        
+        setTimeout(pitchAnimation, 2000);
+
+
           ball.position.y += randomPitchSpeed;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
         //HR movement
  		} else if (ball.direction === "HR") {//condition statement that checks if the direction of the ball is HR(home run)
@@ -174,7 +161,6 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
 $(".reset").click(function(){
     reset();
 });
-
 
 
 
