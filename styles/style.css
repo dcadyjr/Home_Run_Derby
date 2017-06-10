@@ -129,10 +129,40 @@
 	33% {background-position: 312px -5px;}
 	66% {background-position: 333px -5px;}
 	100% {background-position: 377px -5px;}
-	}
+}
 
+#batter{
+	left: 614px;
+	top: 625px;
+	width: 25px;
+	height: 34px;
+	background-image: url(../images/BaseballSheet1.png);
+	z-index: 3;
+	position: absolute;
+	background-position: 273px -388px;
+}
 
+.swingAnimate{
+	left: 614px;
+	top: 625px;
+	width: 25px;
+	height: 34px;
+	background-image: url(../images/BaseballSheet1.png);
+	z-index: 3;
+	position: absolute;
+	animation-name:  hitIt;
+	animation-duration: .3s;
+	animation-timing-function: steps(4);
+	animation-fill-mode: forwards;
+	animation-iteration-count: 1; 
+}
 
+@keyframes hitIt {
+	0% {background-position: 273px -388px;}
+	33% {background-position: 293px -388px;}
+	66% {background-position: 313px -388px;}
+	100% {background-position: 344px -388px;}
+}
 
 
 

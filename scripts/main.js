@@ -7,20 +7,31 @@ var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variabl
 var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in newPitch function
 var highScore = 0;//variable to hold the current high score
 
-var pitchAnimation = function() {
+///pitch animation
+var pitchAnimation = function() { //variable for pitching animation
 
-        $("#pitcher").addClass("pitchAnimate");
+        $("#pitcher").addClass("pitchAnimate");//adds the pitchAnimate class to the pitcher div
         
-        window.setTimeout(function() {
-        $("#pitcher").removeClass("pitchAnimate");
-        }, 500);
+        window.setTimeout(function() {//sets a delay
+          $("#pitcher").removeClass("pitchAnimate");//removes the pitchAnimate class from the pitcher
+          }, 500);//after .5s the class is removed
 } 
+ pitchAnimation ();
+
+ var hitAnimation = function(){
+      $("#batter").addClass("swingAnimate");
+
+      window.setTimeout(function() {
+        $("#batter").removeClass("swingAnimate");
+      }, 500);
+ }
 
 
+//function for a new pitch
 var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
 	 
-   randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
-   randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
+    randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
+    randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
 
 	  ball.position.x = 600;//sets the position of the ball on the x axis to 600
   	ball.position.y = 570;//sets the postiion of the ball on the y axis to 570
@@ -30,6 +41,8 @@ var newPitch = function (){//starts a function that make a new pitch happen afte
     $(".playResult").html("");//clears the playResult part of the scoreboard
 }
 
+
+//function for game reset
 var reset = function() {//variable for game reset button
   $("#homerunValue").html("");//clears the home runs score from scoreboard
   $("#outValue").html("");//clears the out score from the scoreboard
@@ -48,8 +61,7 @@ var ball = {//variable ball that holds that is an object with properties for the
  		//Pitch movement
     if (ball.direction === "pitch") {//condition statement that checks if the direction of the ball is "pitch".
         
-        setTimeout(pitchAnimation, 2000);
-
+        setTimeout(pitchAnimation, 2000);//runs the pitchAnmiation function on a 2 second delay to match the newPitch function delay
 
           ball.position.y += randomPitchSpeed;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
         //HR movement
@@ -128,6 +140,8 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
  	var swingTime = ball.position.y;//a variable that holds the position of ball position y
  		if (key === 72 && swingTime >= 642 && swingTime <= 644) {//conditional for HR. listens ff the h key is pressed while the ball is between 642 and 644 pixels
  			// console.log(swingTime);
+      hitAnimation ();
+
  			ball.direction = "HR";//changes the direction property in the ball object to HR
  			ball.draw();//runs the draw function in the ball object
 			ball.move();//runs the move function in the ball object
@@ -140,7 +154,8 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
       }
 			console.log("home run #" + homeRun);
  		} else if (key === 72 && swingTime === 640 || key === 72 && swingTime === 641 || key === 72 && swingTime === 645 || key === 72 && swingTime === 646) {//conditional for an out.  looks to see if the H key is pressed while the ball is at certain pixels.
- 			ball.direction = "out";//changes the direction property in the ball object to "out"
+ 			hitAnimation ();
+      ball.direction = "out";//changes the direction property in the ball object to "out"
  			ball.draw();//runs the draw function in the ball object
 			ball.move();//runs the move function in the ball object
  			totalOuts = totalOuts += 1;//adds 1 to the Total outs variable which keeps track of how many outs there are
@@ -148,14 +163,17 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
       $(".playResult").html("OUT!!!");
       console.log("swinging out", "out #" + totalOuts);
  		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
- 			ball.direction = "stop";//changes the direction in the ball object to stop
+ 			hitAnimation ();
+      ball.direction = "stop";//changes the direction in the ball object to stop
  			ball.draw();//runs the draw function in the ball object
 			ball.move();//runs the move function in the ball object
 			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
       $("#outValue").html(totalOuts);
       $(".playResult").html("SWING AND A MISS!!!");
 			console.log("swingingstrike", "out #" + totalOuts);
- 		}
+ 		} else if (key === 72) {
+        hitAnimation ();
+    }
  })
 
 $(".reset").click(function(){
