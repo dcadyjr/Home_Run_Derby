@@ -17,7 +17,7 @@ var pitchAnimation = function() { //variable for pitching animation
 } 
  // pitchAnimation ();
 
- var hitAnimation = function(){
+var hitAnimation = function(){
       $("#batter").addClass("swingAnimate");//adds the swingAnimate class to the batter div
 
       window.setTimeout(function() {//sets a delay
@@ -25,7 +25,7 @@ var pitchAnimation = function() { //variable for pitching animation
       }, 500);//after .5s the class is removed
  }
 
-var gameStart = function () {
+var gameStart = function () {//wraps entire game into a function so it can be called when the play ball button is pressed
 
 
 //function for a new pitch
@@ -109,11 +109,10 @@ var gameStart = function () {
     				ball.direction = "stop";//changes the ball direction to stop
     				// console.log(ball.direction, ball.position.y);
     		}
-        if (totalOuts === 10){
-            console.log("stop");
-            ball.direction = "gameOver";
-            $(".playResult").html("GAME OVER");
-            $(".reset").show();
+        if (totalOuts === 10){//checks to see if there are 10 outs
+            ball.direction = "gameOver";//changes ball direction to gameOver
+            $(".playResult").html("GAME OVER");//puts Game Over message on the scoreboard
+            $(".reset").show();//shows the game reset button
         }    
   	},
   	draw: function(){//this function draws the ball
@@ -140,40 +139,36 @@ var gameStart = function () {
    	var key = event.which;//variable that holds the key that is pressed
    	var swingTime = ball.position.y;//a variable that holds the position of ball position y
    		if (key === 72 && swingTime >= 642 && swingTime <= 644) {//conditional for HR. listens ff the h key is pressed while the ball is between 642 and 644 pixels
-   			// console.log(swingTime);
         hitAnimation ();//runs hit animation function above
 
    			ball.direction = "HR";//changes the direction property in the ball object to HR
    			ball.draw();//runs the draw function in the ball object
   			ball.move();//runs the move function in the ball object
   			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
-        $("#homerunValue").html(homeRun);
-        $(".playResult").html("HOME RUN!!!"); 
-          if (highScore < homeRun) {
-          highScore = homeRun;
-          $("#highscoreValue").html(highScore);
+        $("#homerunValue").html(homeRun);//updates the total number of homeruns to the scoreboard
+        $(".playResult").html("HOME RUN!!!");//puts the message in the play result part of scoreboard 
+          if (highScore < homeRun) {//conditional that checks if the highScore less than homerun total
+          highScore = homeRun;//updates the highscore total with the homeRun total
+          $("#highscoreValue").html(highScore);//puts the highScore in the scoreboard
         }
-  			console.log("home run #" + homeRun);
    		} else if (key === 72 && swingTime === 640 || key === 72 && swingTime === 641 || key === 72 && swingTime === 645 || key === 72 && swingTime === 646) {//conditional for an out.  looks to see if the H key is pressed while the ball is at certain pixels.
    			hitAnimation ();//runs hit animation function above
         ball.direction = "out";//changes the direction property in the ball object to "out"
    			ball.draw();//runs the draw function in the ball object
   			ball.move();//runs the move function in the ball object
    			totalOuts = totalOuts += 1;//adds 1 to the Total outs variable which keeps track of how many outs there are
-   			$("#outValue").html(totalOuts);
-        $(".playResult").html("OUT!!!");
-        console.log("swinging out", "out #" + totalOuts);
+   			$("#outValue").html(totalOuts);//updates the total number of outs to the scoreboard
+        $(".playResult").html("OUT!!!");//puts the message in the play result part of scoreboard
    		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
    			hitAnimation ();//runs hit animation function above
         ball.direction = "stop";//changes the direction in the ball object to stop
    			ball.draw();//runs the draw function in the ball object
   			ball.move();//runs the move function in the ball object
   			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
-        $("#outValue").html(totalOuts);
-        $(".playResult").html("SWING AND A MISS!!!");
-  			console.log("swingingstrike", "out #" + totalOuts);
-   		} else if (key === 72) {
-          hitAnimation ();
+        $("#outValue").html(totalOuts);//takes the value of the total outs variable and updates the outs total of the scoreboard
+        $(".playResult").html("SWING AND A MISS!!!");//puts the message in the play result part of scoreboard
+   		} else if (key === 72) {//listens for the h key to be pressed
+          hitAnimation ();//runs hit animation
       }
    })
 
@@ -185,15 +180,15 @@ var gameStart = function () {
 
 }//gameStart closing bracket
 
-$(".startbtn").click(function() {
-    $(".startScreen").hide();
+$(".startbtn").click(function() {//grabs the payball button
+    $(".startScreen").hide();//hides the div that appears on game load
 
-    var name = document.getElementById("playerName").value;
-    $(".namePTag").append(name);
+    var name = document.getElementById("playerName").value;//gets the value entered in the name field
+    $(".namePTag").append(name);//puts the name into the <p> in the scoreboard
 
-    gameStart();
+    gameStart();// starts the game function
 
-    ball.direction = "pitch";
+    ball.direction = "pitch";//changes ball direction to pitch
   
 })
 
