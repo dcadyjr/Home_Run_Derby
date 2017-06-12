@@ -19,11 +19,11 @@ var pitchAnimation = function() { //variable for pitching animation
  pitchAnimation ();
 
  var hitAnimation = function(){
-      $("#batter").addClass("swingAnimate");
+      $("#batter").addClass("swingAnimate");//adds the swingAnimate class to the batter div
 
-      window.setTimeout(function() {
-        $("#batter").removeClass("swingAnimate");
-      }, 500);
+      window.setTimeout(function() {//sets a delay
+        $("#batter").removeClass("swingAnimate");//removes the swingAnimate class from the batter
+      }, 500);//after .5s the class is removed
  }
 
 
@@ -140,7 +140,7 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
  	var swingTime = ball.position.y;//a variable that holds the position of ball position y
  		if (key === 72 && swingTime >= 642 && swingTime <= 644) {//conditional for HR. listens ff the h key is pressed while the ball is between 642 and 644 pixels
  			// console.log(swingTime);
-      hitAnimation ();
+      hitAnimation ();//runs hit animation function above
 
  			ball.direction = "HR";//changes the direction property in the ball object to HR
  			ball.draw();//runs the draw function in the ball object
@@ -154,7 +154,7 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
       }
 			console.log("home run #" + homeRun);
  		} else if (key === 72 && swingTime === 640 || key === 72 && swingTime === 641 || key === 72 && swingTime === 645 || key === 72 && swingTime === 646) {//conditional for an out.  looks to see if the H key is pressed while the ball is at certain pixels.
- 			hitAnimation ();
+ 			hitAnimation ();//runs hit animation function above
       ball.direction = "out";//changes the direction property in the ball object to "out"
  			ball.draw();//runs the draw function in the ball object
 			ball.move();//runs the move function in the ball object
@@ -163,7 +163,7 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
       $(".playResult").html("OUT!!!");
       console.log("swinging out", "out #" + totalOuts);
  		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
- 			hitAnimation ();
+ 			hitAnimation ();//runs hit animation function above
       ball.direction = "stop";//changes the direction in the ball object to stop
  			ball.draw();//runs the draw function in the ball object
 			ball.move();//runs the move function in the ball object
@@ -176,8 +176,8 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
     }
  })
 
-$(".reset").click(function(){
-    reset();
+$(".reset").click(function(){//grabs the reset button and put a click listener on it
+    reset();//runs the reset function.
 });
 
 
