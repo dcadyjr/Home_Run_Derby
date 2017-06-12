@@ -6,7 +6,6 @@ var totalOuts = 0;//variable to hold the total number of outs for the player
 var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variable that holds a random number between 400 and 550. used belwo to randomize the depth of "out" hits.
 var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in newPitch function
 var highScore = 0;//variable to hold the current high score
-
 ///pitch animation
 var pitchAnimation = function() { //variable for pitching animation
 
@@ -186,11 +185,15 @@ var gameStart = function () {
 
 $(".startbtn").click(function() {
     $(".startScreen").hide();
+
+    var name = document.getElementById("playerName").value;
+    $("#name").html(name);
+
     gameStart();
 })
 
 
-
+ 
 
 
 
