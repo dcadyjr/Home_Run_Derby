@@ -187,7 +187,7 @@ $(".startbtn").click(function() {
     $(".startScreen").hide();
 
     var name = document.getElementById("playerName").value;
-    $("#name").html(name);
+    $(".namePTag").append(name);
 
     gameStart();
 })
