@@ -208,8 +208,7 @@
 }
 
 .startScreen {
-	background: #000;
-	opacity: 0.5;
+	background: rgba(0, 0, 0, .5);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -222,13 +221,16 @@
 .instructions {
 	width: 400px;
 	height: 200px;
-	background: red;
+	background: white;
+	opacity: 1;
 	margin-top: 220px;
 	margin-left: 415px;
 
 }
 .startbtn {
-
+	margin-top: 130px;
+	margin-left: 165px;
+	position: absolute;
 }
 
 
