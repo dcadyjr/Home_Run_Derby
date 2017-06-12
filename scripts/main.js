@@ -15,7 +15,7 @@ var pitchAnimation = function() { //variable for pitching animation
           $("#pitcher").removeClass("pitchAnimate");//removes the pitchAnimate class from the pitcher
           }, 500);//after .5s the class is removed
 } 
- pitchAnimation ();
+ // pitchAnimation ();
 
  var hitAnimation = function(){
       $("#batter").addClass("swingAnimate");//adds the swingAnimate class to the batter div
@@ -26,6 +26,8 @@ var pitchAnimation = function() { //variable for pitching animation
  }
 
 var gameStart = function () {
+
+
 //function for a new pitch
   var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
   	 
@@ -85,7 +87,7 @@ var gameStart = function () {
           else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
 
     				setTimeout(newPitch, 2000);//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
-    			}
+    			} 
 
     		if (ball.position.y > 646) {//checks to see if the position of the ball on the y axis is greater than 646
 
@@ -190,6 +192,9 @@ $(".startbtn").click(function() {
     $(".namePTag").append(name);
 
     gameStart();
+
+    ball.direction = "pitch";
+  
 })
 
 
