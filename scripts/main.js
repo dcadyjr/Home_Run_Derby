@@ -68,7 +68,13 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
           //HR movement
    		} else if (ball.direction === "HR") {//condition statement that checks if the direction of the ball is HR(home run)
    				 ball.position.y -= 5;//moves the ball position by 5 pixels up the y axis as long as direction is HR
-   				 ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
+           ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
+            $(".playResult").addClass("blinkerText");
+
+            window.setTimeout(function() {//sets a delay
+                $(".playResult").removeClass("blinkerText");//removes the swingAnimate class from the batter
+                }, 2000);//after .5s the class is removed
+
           //out movement
     		} else if (ball.direction === "out") {//conditional statement to check if the direction of the ball is "out"
     				ball.position.y -= 5;//moves the position of the ball up the y axis by 5
@@ -188,8 +194,6 @@ $(".startbtn").click(function() {//grabs the payball button
 
     gameStart();// starts the game function
 
-    ball.direction = "pitch";//changes ball direction to pitch
-  
 })
 
 
