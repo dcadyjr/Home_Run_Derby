@@ -15,17 +15,17 @@
 
 .scoreboard{
 	background: black;
-	width: 340px;
-	height: 150px;
+	width: 391px;
+	height: 169px;
 	z-index: 5;
 	position: absolute;
 	top: 55px;
-	left: 37%;
+	left: 34%;
 }
 
 .infoScreen{
-	height: 100px;
-	width: 170px;
+	height: 85px;
+	width: 221px;
 	background-color: rgb(35, 69, 21);
 	float: left;
 	text-align: center;
@@ -35,7 +35,7 @@
 	padding-bottom: 10px;
 }
  .currentScore{
- 	height: 100px;
+ 	height: 85px;
 	width: 170px;
 	background-color: rgb(35, 69, 21);
 	float: right;
@@ -48,8 +48,8 @@
  }
 
  .playResult {
- 	height: 50px;
-	width: 340px;
+ 	height: 73px;
+	width: 391px;
 	background-color: black;
 	margin-top: 20px;
 	clear: both;
@@ -70,19 +70,22 @@
 	margin-bottom: -9px;
 	font-weight: bold;
 	font-size: 12px;
-	/*border: 1px solid red;*/
+	border: 1px solid red;
 
 }
 #outValue{
 	line-height: 38px;
 	margin-left: 5px;
+	width: 35px;
 }
 #out{
+	font-family: 'Heebo', sans-serif;
 	line-height: 7px;
 	text-align: left;
 	margin-left: 5px;
 }
 #homerun{
+	font-family: 'Heebo', sans-serif;
 	line-height: 7px;
 	text-align: left;
 	margin-left: 5px;
@@ -90,18 +93,21 @@
 #homerunValue{
 	line-height: 38px;
 	margin-left: 5px;
+	width: 35px;
 }
 #highscoreValue{
 	line-height: 50px;
 	
 }
 #atbat{
+	font-family: 'Heebo', sans-serif;
 	padding-left: 5px;
 	text-align: left;
 	line-height: 8px;
 	
 }
 #highscore{
+	font-family: 'Heebo', sans-serif;
 	padding-left: 5px;
 	text-align: left;
 	

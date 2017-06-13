@@ -109,7 +109,7 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
     		if (ball.direction === "HR" && ball.position.y < 0) {//conditional statement checks to see the ball direction is HR and the y position of the ball is less than 0
     				ball.direction = "stop";//changes the ball direction to stop
     		}
-        if (totalOuts === 5){//checks to see if there are 10 outs
+        if (totalOuts === 10){//checks to see if there are 10 outs
             ball.direction = "gameOver";//changes ball direction to gameOver
             $(".playResult").html("<p>GAME OVER</p>");//puts Game Over message on the scoreboard
             $(".reset").show();//shows the game reset button
@@ -137,12 +137,6 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
       
   animateCanvas();//runs the animate canvas function
 
-if (totalOuts === 10){//checks to see if there are 10 outs
-            ball.direction = "gameOver";//changes ball direction to gameOver
-            $(".playResult").html("<p>GAME OVER</p>");//puts Game Over message on the scoreboard
-            $(".reset").show();//shows the game reset button
-    
-      }
 
    
   document.addEventListener("keydown", function(){//adds the event listener looking for keydown
