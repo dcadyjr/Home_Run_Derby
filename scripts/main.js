@@ -68,7 +68,7 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
             ball.position.y += randomPitchSpeed;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
           //HR movement
    		} else if (ball.direction === "HR") {//condition statement that checks if the direction of the ball is HR(home run)
-   				 ball.position.y -= 5;//moves the ball position by 5 pixels up the y axis as long as direction is HR
+   				 ball.position.y -= randomHrNum;//moves the ball position by 5 pixels up the y axis as long as direction is HR
            ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
       
 
@@ -78,7 +78,7 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
 
           //out movement
     		} else if (ball.direction === "out") {//conditional statement to check if the direction of the ball is "out"
-    				ball.position.y -= 5;//moves the position of the ball up the y axis by 5
+    				ball.position.y -= randomHrNum;//moves the position of the ball up the y axis by 5
     				ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
             //stop movement
     		} else if (ball.direction === "stop") {//conditional statement checks to see if the direction of the ball is "stop"
@@ -161,7 +161,7 @@ if (totalOuts === 10){//checks to see if there are 10 outs
 
         $(document).ready(function() {
 
-          var quotes = new Array ("HOME RUN!", "IT'S OUTTA HERE!", "SAYONARA!", "TAPE MEASURE SHOT!", "HEY HEY!", "HOLY COW!", "BACK BACK BACK" + "." + "." + "." + "GONE!", "SEE YA!", "KISS IT GOODBYE!", "GOING, GOING, GONE!");
+          var quotes = new Array ("HOME RUN!", "IT'S OUTTA HERE!", "SAYONARA!", "TAPE MEASURE SHOT!", "HEY HEY!", "HOLY COW!", "BACK BACK BACK GONE!", "SEE YA!", "KISS IT GOODBYE!", "GOING, GOING, GONE!");
           var randno = Math.floor(Math.random() * quotes.length);
           $(".playResult").html("<p>" + (quotes[randno]) + "</p>");
           $(".playResult p").addClass("blinkerText");
@@ -180,7 +180,17 @@ if (totalOuts === 10){//checks to see if there are 10 outs
   			ball.move();//runs the move function in the ball object
    			totalOuts = totalOuts += 1;//adds 1 to the Total outs variable which keeps track of how many outs there are
    			$("#outValue").html(totalOuts);//updates the total number of outs to the scoreboard
-        $(".playResult").html("<p>OUT!!!</p>");//puts the message in the play result part of scoreboard
+
+          $(document).ready(function() {
+
+          var outQuotes = new Array ("OUT", "EASY OUT", "CAN OF CORN", "NOT EVEN CLOSE", "NOT A CHANCE", "HIT IT HARDER");
+          var a = Math.floor(Math.random() * outQuotes.length);
+          $(".playResult").html("<p>" + (outQuotes[a]) + "</p>");//puts the message in the play result part of scoreboard
+          
+        });
+
+
+        //puts the message in the play result part of scoreboard
    		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
    			hitAnimation ();//runs hit animation function above
         ball.direction = "stop";//changes the direction in the ball object to stop
@@ -188,7 +198,17 @@ if (totalOuts === 10){//checks to see if there are 10 outs
   			ball.move();//runs the move function in the ball object
   			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
         $("#outValue").html(totalOuts);//takes the value of the total outs variable and updates the outs total of the scoreboard
-        $(".playResult").html("<p>Swing and a Miss</p>");//puts the message in the play result part of scoreboard
+        
+        $(document).ready(function() {
+
+          var strikeQuotes = new Array ("K", "STRIKE", "THE WHIFF", "BLEW IT BY HIM", "BAT'S MADE OF SWISS CHEESE", "MADE HIM LOOK SILLY");
+          var b = Math.floor(Math.random() * strikeQuotes.length);
+          $(".playResult").html("<p>" + (strikeQuotes[b]) + "</p>");//puts the message in the play result part of scoreboard
+          
+        });
+
+
+        
    		} else if (key === 72) {//listens for the h key to be pressed
           hitAnimation ();//runs hit animation
       }
