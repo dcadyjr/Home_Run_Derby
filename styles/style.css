@@ -68,6 +68,8 @@
 	color: white;
 	display: inline-block;
 	margin-bottom: -9px;
+	font-weight: bold;
+	font-size: 12px;
 	/*border: 1px solid red;*/
 
 }
@@ -234,7 +236,7 @@
 }
 
 .blinkerText {
-	animation: blinker 2s linear 1;
+	animation: blinker 2s linear 2;
 }
 
 @keyframes blinker {

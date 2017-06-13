@@ -6,6 +6,7 @@ var totalOuts = 0;//variable to hold the total number of outs for the player
 var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variable that holds a random number between 400 and 550. used belwo to randomize the depth of "out" hits.
 var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in newPitch function
 var highScore = 0;//variable to hold the current high score
+var randomHrNum = Math.floor(Math.random() * ((5 - 3)+ 1) + 3);
 ///pitch animation
 var pitchAnimation = function() { //variable for pitching animation
 
@@ -49,7 +50,7 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
     $("#outValue").html("");//clears the out score from the scoreboard
     homeRun = 0;//resets homerun variable to 0
     totalOuts = 0;//resets the total outs variable to 0
-    $(".playResult").html("");//clears the play result part of the scoreboard
+    $(".resultPTag").append("");//clears the play result part of the scoreboard
     $(".reset").hide();
     newPitch();//runs the new pitch function
   } 
@@ -69,11 +70,11 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
    		} else if (ball.direction === "HR") {//condition statement that checks if the direction of the ball is HR(home run)
    				 ball.position.y -= 5;//moves the ball position by 5 pixels up the y axis as long as direction is HR
            ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
-            $(".playResult").addClass("blinkerText");
+      
 
-            window.setTimeout(function() {//sets a delay
-                $(".playResult").removeClass("blinkerText");//removes the swingAnimate class from the batter
-                }, 2000);//after .5s the class is removed
+            // window.setTimeout(function() {//sets a delay
+            //     $(".playResult").removeClass("blinkerText");//removes the swingAnimate class from the batter
+            //     }, 2000);//after .5s the class is removed
 
           //out movement
     		} else if (ball.direction === "out") {//conditional statement to check if the direction of the ball is "out"
@@ -89,37 +90,32 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
     		} else if (ball.direction === "gameOver") {//looks to see if ball direction is set to gameOver
             ball.position.y += 0;//makes the ball stop moving on the y axis
             ball.position.x -= 0;//makes the ball stop moving on the x axis
-        }
-          else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
-
+        } else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
     				setTimeout(newPitch, 2000);//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
     			} 
 
-    		if (ball.position.y > 646) {//checks to see if the position of the ball on the y axis is greater than 646
-
+        if (ball.position.y > 646) {//checks to see if the position of the ball on the y axis is greater than 646
     				ball.direction = "stop";//changes the ball direction to stop
   				  ball.position.x = 600;//sets the x position of the ball to 600
   				  ball.position.y = 570;//sets the y position of the ball to 570
   				  totalOuts = totalOuts += 1;//increases the total outs by 1
   				  $("#outValue").html(totalOuts);
-            $(".playResult").html("OUT!!!");
-            console.log("strike looking",  "out #" + totalOuts);
+            $(".playResult").html("<p>OUT!!!</p>");
     		}	
-    			// console.log(ball.direction, ball.position.y, randomNumberY);
+  
     		if (ball.direction === "out" && ball.position.y > (randomNumberY - 5) && ball.position.y < (randomNumberY + 5)) {//checks if the ball direction is out and if the ball postion y is greater than or less than a radnom number between 400 and 550
-    				// console.log("woohoo", ball.position.y);
     				ball.direction = "stop";//changes the ball direction to stop	 				
     		}
     		if (ball.direction === "HR" && ball.position.y < 0) {//conditional statement checks to see the ball direction is HR and the y position of the ball is less than 0
-    				
     				ball.direction = "stop";//changes the ball direction to stop
-    				// console.log(ball.direction, ball.position.y);
     		}
-        if (totalOuts === 10){//checks to see if there are 10 outs
+        if (totalOuts === 5){//checks to see if there are 10 outs
             ball.direction = "gameOver";//changes ball direction to gameOver
-            $(".playResult").html("GAME OVER");//puts Game Over message on the scoreboard
+            $(".playResult").html("<p>GAME OVER</p>");//puts Game Over message on the scoreboard
             $(".reset").show();//shows the game reset button
-        }    
+            
+
+        }
   	},
   	draw: function(){//this function draws the ball
   		ctx.clearRect(0,0,canvas.width,canvas.height);//clears the canvas
@@ -134,11 +130,19 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
   var animateCanvas = function(){//function to animate the canvas
    
       ball.move();//runs the move function from the ball object
-    	ball.draw();//runs the draw function from the draw object
+    	ball.draw();//runs the draw function from the draw objectc
 
     	window.requestAnimationFrame(animateCanvas);//runs the animate canvas 60 fps
   }
+      
   animateCanvas();//runs the animate canvas function
+
+if (totalOuts === 10){//checks to see if there are 10 outs
+            ball.direction = "gameOver";//changes ball direction to gameOver
+            $(".playResult").html("<p>GAME OVER</p>");//puts Game Over message on the scoreboard
+            $(".reset").show();//shows the game reset button
+    
+      }
 
    
   document.addEventListener("keydown", function(){//adds the event listener looking for keydown
@@ -151,8 +155,20 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
    			ball.draw();//runs the draw function in the ball object
   			ball.move();//runs the move function in the ball object
   			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
-        $("#homerunValue").html(homeRun);//updates the total number of homeruns to the scoreboard
-        $(".playResult").html("HOME RUN!!!");//puts the message in the play result part of scoreboard 
+        $("#homerunValue").html("<p>" + homeRun + "</p>");//updates the total number of homeruns to the scoreboard
+        
+
+
+        $(document).ready(function() {
+
+          var quotes = new Array ("HOME RUN!", "IT'S OUTTA HERE!", "SAYONARA!", "TAPE MEASURE SHOT!", "HEY HEY!", "HOLY COW!", "BACK BACK BACK" + "." + "." + "." + "GONE!", "SEE YA!", "KISS IT GOODBYE!", "GOING, GOING, GONE!");
+          var randno = Math.floor(Math.random() * quotes.length);
+          $(".playResult").html("<p>" + (quotes[randno]) + "</p>");
+          $(".playResult p").addClass("blinkerText");
+        });
+
+        //puts the message in the play result part of scoreboard 
+         
           if (highScore < homeRun) {//conditional that checks if the highScore less than homerun total
           highScore = homeRun;//updates the highscore total with the homeRun total
           $("#highscoreValue").html(highScore);//puts the highScore in the scoreboard
@@ -164,7 +180,7 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
   			ball.move();//runs the move function in the ball object
    			totalOuts = totalOuts += 1;//adds 1 to the Total outs variable which keeps track of how many outs there are
    			$("#outValue").html(totalOuts);//updates the total number of outs to the scoreboard
-        $(".playResult").html("OUT!!!");//puts the message in the play result part of scoreboard
+        $(".playResult").html("<p>OUT!!!</p>");//puts the message in the play result part of scoreboard
    		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
    			hitAnimation ();//runs hit animation function above
         ball.direction = "stop";//changes the direction in the ball object to stop
@@ -172,7 +188,7 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
   			ball.move();//runs the move function in the ball object
   			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
         $("#outValue").html(totalOuts);//takes the value of the total outs variable and updates the outs total of the scoreboard
-        $(".playResult").html("SWING AND A MISS!!!");//puts the message in the play result part of scoreboard
+        $(".playResult").html("<p>Swing and a Miss</p>");//puts the message in the play result part of scoreboard
    		} else if (key === 72) {//listens for the h key to be pressed
           hitAnimation ();//runs hit animation
       }
