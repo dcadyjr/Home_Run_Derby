@@ -114,6 +114,8 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
             $(".playResult").html("<p>GAME OVER</p>");//puts Game Over message on the scoreboard
             $(".reset").show();//shows the game reset button
             
+            var audioOvert = new Audio("media/groans.mp3");
+            audioOver.play();
 
         }
   	},
@@ -161,7 +163,8 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
           $(".playResult p").addClass("blinkerText");
         });
 
-        //puts the message in the play result part of scoreboard 
+        var audioHR = new Audio("media/hitcrowdcheer.mp3");
+        audioHR.play(); 
          
           if (highScore < homeRun) {//conditional that checks if the highScore less than homerun total
           highScore = homeRun;//updates the highscore total with the homeRun total
@@ -176,6 +179,9 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
    			$("#outValue").html(totalOuts);//updates the total number of outs to the scoreboard
 
           $(document).ready(function() {
+
+            var outAudio = new Audio("media/bathitball.mp3");
+            outAudio.play();
 
           var outQuotes = new Array ("OUT", "EASY OUT", "CAN OF CORN", "NOT EVEN CLOSE", "NOT A CHANCE", "HIT IT HARDER");
           var a = Math.floor(Math.random() * outQuotes.length);
@@ -193,6 +199,12 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
   			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
         $("#outValue").html(totalOuts);//takes the value of the total outs variable and updates the outs total of the scoreboard
         
+        var outAudioFiles = new Array("media/boooo.mp3", "media/crowdboo.mp3")
+        var c = Math.floor(Math.random() * outAudioFiles.length);
+
+         var strikeAudio = new Audio((outAudioFiles[c]));
+          strikeAudio.play(); 
+
         $(document).ready(function() {
 
           var strikeQuotes = new Array ("K", "STRIKE", "THE WHIFF", "BLEW IT BY HIM", "BAT'S MADE OF SWISS CHEESE", "MADE HIM LOOK SILLY");
@@ -218,6 +230,9 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
 
 $(".startbtn").click(function() {//grabs the payball button
     $(".startScreen").hide();//hides the div that appears on game load
+
+    var btnAudio = new Audio("media/bathitball.mp3");
+    btnAudio.play();
 
     var name = document.getElementById("playerName").value;//gets the value entered in the name field
     $(".namePTag").append(name);//puts the name into the <p> in the scoreboard
