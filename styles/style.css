@@ -237,23 +237,36 @@
 }
 
 .instructions {
+	font-family: "Days One", sans-serif;
 	width: 500px;
-    height: 200px;
-    background: rgb(0, 50, 123);
+    height: 280px;
+    background: rgba(3,43,104,1);
+background: -moz-linear-gradient(top, rgba(3,43,104,1) 2%, rgba(3,43,104,0.98) 45%, rgba(30,109,200,0.96) 88%, rgba(30,109,200,0.96) 99%, rgba(30,109,200,1) 99%);
+background: -webkit-gradient(left top, left bottom, color-stop(2%, rgba(3,43,104,1)), color-stop(45%, rgba(3,43,104,0.98)), color-stop(88%, rgba(30,109,200,0.96)), color-stop(99%, rgba(30,109,200,0.96)), color-stop(99%, rgba(30,109,200,1)));
+background: -webkit-linear-gradient(top, rgba(3,43,104,1) 2%, rgba(3,43,104,0.98) 45%, rgba(30,109,200,0.96) 88%, rgba(30,109,200,0.96) 99%, rgba(30,109,200,1) 99%);
+background: -o-linear-gradient(top, rgba(3,43,104,1) 2%, rgba(3,43,104,0.98) 45%, rgba(30,109,200,0.96) 88%, rgba(30,109,200,0.96) 99%, rgba(30,109,200,1) 99%);
+background: -ms-linear-gradient(top, rgba(3,43,104,1) 2%, rgba(3,43,104,0.98) 45%, rgba(30,109,200,0.96) 88%, rgba(30,109,200,0.96) 99%, rgba(30,109,200,1) 99%);
     opacity: 1;
     margin-top: 28px;
     margin-left: 325px;
     color: white;
+    text-align: center;
+    padding-top: 10px;
 
 }
 .startbtn {
+	background-image: url(../images/grass.jpg);
 	margin-top: 68px;
     margin-left: -118px;
     position: absolute;
     height: 50px;
     width: 100px;
     border-radius: 11px;
-	
+    color: white;
+    font-size: 20px;
+}
+.startbtn:hover{
+	text-shadow: 0px 0px 4px white;
 }
 
 .blinkerText {
@@ -271,9 +284,10 @@
 }
 
 #playerName {
-	margin-left: 183px;
+	margin-left: 13px;
     margin-top: 20px;
     width: 127px;
+    height: 20px;
 }
 
 
