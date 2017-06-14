@@ -74,9 +74,12 @@
 
 }
 #outValue{
+	font-family: "Wallpoet", cursive;
+	color: rgb(242, 215, 38);
 	line-height: 38px;
 	margin-left: 5px;
 	width: 35px;
+	font-size: 24px;
 }
 #out{
 	font-family: 'Heebo', sans-serif;
@@ -91,12 +94,18 @@
 	margin-left: 5px;
 }
 #homerunValue{
+	font-family: "Wallpoet", cursive;
+	color: rgb(242, 215, 38);
 	line-height: 38px;
 	margin-left: 5px;
 	width: 35px;
+	font-size: 24px;
 }
 #highscoreValue{
+	font-family: "Wallpoet", cursive;
+	color: rgb(242, 215, 38);
 	line-height: 50px;
+	font-size: 24px;
 	
 }
 #atbat{
@@ -113,6 +122,7 @@
 	
 }
 #name{
+	font-family: "Wallpoet", cursive;
 	line-height: 7px;
 
 }
