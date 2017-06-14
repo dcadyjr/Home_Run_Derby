@@ -8,14 +8,14 @@ var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in
 var highScore = 0;//variable to hold the current high score
 var randomHrNum = Math.floor(Math.random() * ((5 - 3)+ 1) + 3);
 ///pitch animation
-var pitchAnimation = function() { //variable for pitching animation
+// var pitchAnimation = function() { //variable for pitching animation
 
-        $("#pitcher").addClass("pitchAnimate");//adds the pitchAnimate class to the pitcher div
+//         $("#pitcher").addClass("pitchAnimate");//adds the pitchAnimate class to the pitcher div
         
-        window.setTimeout(function() {//sets a delay
-          $("#pitcher").removeClass("pitchAnimate");//removes the pitchAnimate class from the pitcher
-          }, 500);//after .5s the class is removed
-} 
+//         window.setTimeout(function() {//sets a delay
+//           $("#pitcher").removeClass("pitchAnimate");//removes the pitchAnimate class from the pitcher
+//           }, 500);//after .5s the class is removed
+// } 
  // pitchAnimation ();
 
 var hitAnimation = function(){
@@ -34,18 +34,23 @@ $("#highscoreValue").html(highScore);
 
 //function for a new pitch
   var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
-  	 
+  	 ball.direction = "mound";
 
-     setTimeout(pitchAnimation, 2000);
+     ctx.clearRect(ball.position.x -10,ball.position.y -10, 20, 20);
+
+     setTimeout(function(){
+      ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
+
+      drawPitcher();
       randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
       randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
 
-  	  ball.position.x = 600;//sets the position of the ball on the x axis to 600
-    	ball.position.y = 570;//sets the postiion of the ball on the y axis to 570
+      ball.position.x = 600;//sets the position of the ball on the x axis to 600
+      ball.position.y = 570;//sets the postiion of the ball on the y axis to 570
 
-    	ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
-      
       $(".playResult").html("");//clears the playResult part of the scoreboard
+     },2000)
+     
   }
 
 
@@ -68,6 +73,7 @@ $("#highscoreValue").html(highScore);
    		//Pitch movement
       if (ball.direction === "pitch") {//condition statement that checks if the direction of the ball is "pitch".
           
+          // drawPitcher();
           //runs the pitchAnmiation function on a 2 second delay to match the newPitch function delay
 
             ball.position.y += randomPitchSpeed;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
@@ -90,13 +96,13 @@ $("#highscoreValue").html(highScore);
     				ball.position.y += 0;//makes the ball stop moving on the y axis
     				ball.position.x -= 0;//makes the ball stop moving on the x axis
     				// console.log(ball.direction);
-    				setTimeout(newPitch, 2000);//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
+    				newPitch();//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
             //strike movement
     		} else if (ball.direction === "gameOver") {//looks to see if ball direction is set to gameOver
             ball.position.y += 0;//makes the ball stop moving on the y axis
             ball.position.x -= 0;//makes the ball stop moving on the x axis
         } else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
-    				setTimeout(newPitch, 2000);//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
+    				newPitch();//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
     			} 
 
         if (ball.position.y > 646) {//checks to see if the position of the ball on the y axis is greater than 646
@@ -122,7 +128,7 @@ $("#highscoreValue").html(highScore);
         
   	},
   	draw: function(){//this function draws the ball
-  		ctx.clearRect(0,0,canvas.width,canvas.height);//clears the canvas
+  	  ctx.clearRect(ball.position.x -10,ball.position.y -10, 50, 50);//clears the canvas
   		ctx.beginPath();//gets read to draw
   		ctx.fillStyle = 'white';//makdes the fill fo the ball white
   		ctx.arc(ball.position.x, ball.position.y, 3, 0, Math.PI*2);//creates the circle that is the ball
