@@ -128,7 +128,7 @@
 }
 .reset {
 	display: none;
-	font-family: 'VT323', monospace;
+	font-family: "Days One", sans-serif;
 	top: 392px;
 	left: 45%;
 	z-index: 3;
@@ -255,6 +255,7 @@ background: -ms-linear-gradient(top, rgba(3,43,104,1) 2%, rgba(3,43,104,0.98) 45
 
 }
 .startbtn {
+	font-family: "Days One", sans-serif;
 	background-image: url(../images/grass.jpg);
 	margin-top: 68px;
     margin-left: -118px;

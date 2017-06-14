@@ -113,11 +113,8 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
             ball.direction = "gameOver";//changes ball direction to gameOver
             $(".playResult").html("<p>GAME OVER</p>");//puts Game Over message on the scoreboard
             $(".reset").show();//shows the game reset button
-            
-            var audioOvert = new Audio("media/groans.mp3");
-            audioOver.play();
-
         }
+        
   	},
   	draw: function(){//this function draws the ball
   		ctx.clearRect(0,0,canvas.width,canvas.height);//clears the canvas
@@ -178,15 +175,16 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
    			totalOuts = totalOuts += 1;//adds 1 to the Total outs variable which keeps track of how many outs there are
    			$("#outValue").html(totalOuts);//updates the total number of outs to the scoreboard
 
-          $(document).ready(function() {
-
-            var outAudio = new Audio("media/bathitball.mp3");
+        var outAudio = new Audio("media/bathitball.mp3");
             outAudio.play();
 
-          var outQuotes = new Array ("OUT", "EASY OUT", "CAN OF CORN", "NOT EVEN CLOSE", "NOT A CHANCE", "HIT IT HARDER");
+          $(document).ready(function() {
+
+          var outQuotes = new Array ("OUT", "EASY OUT", "CAN OF CORN", "NOT EVEN CLOSE!", "NOT A CHANCE!", "HIT IT HARDER!", "THERE'S NO CRYING IN BASEBALL!");
           var a = Math.floor(Math.random() * outQuotes.length);
           $(".playResult").html("<p>" + (outQuotes[a]) + "</p>");//puts the message in the play result part of scoreboard
           
+
         });
 
 
@@ -207,7 +205,7 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
 
         $(document).ready(function() {
 
-          var strikeQuotes = new Array ("K", "STRIKE", "THE WHIFF", "BLEW IT BY HIM", "BAT'S MADE OF SWISS CHEESE", "MADE HIM LOOK SILLY");
+          var strikeQuotes = new Array ("K", "STRIKE!", "THE WHIFF", "BLEW IT BY HIM!", "BAT'S MADE OF SWISS CHEESE", "MADE HIM LOOK SILLY!");
           var b = Math.floor(Math.random() * strikeQuotes.length);
           $(".playResult").html("<p>" + (strikeQuotes[b]) + "</p>");//puts the message in the play result part of scoreboard
           
@@ -228,6 +226,8 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
 
 }//gameStart closing bracket
 
+
+
 $(".startbtn").click(function() {//grabs the payball button
     $(".startScreen").hide();//hides the div that appears on game load
 
@@ -242,7 +242,11 @@ $(".startbtn").click(function() {//grabs the payball button
 })
 
 
- 
+   // if (totalOuts === 6) {
+   //          var audioCharge = new Audio("media/Baseball-Hockey-Charge-Stadium-Organ-Theme.mp3");
+   //          audioCharge.play();
+   //        }
+
 
 
 
