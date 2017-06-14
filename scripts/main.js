@@ -35,6 +35,8 @@ $("#highscoreValue").html(highScore);
 //function for a new pitch
   var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
   	 
+
+     setTimeout(pitchAnimation, 2000);
       randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
       randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
 
@@ -66,7 +68,7 @@ $("#highscoreValue").html(highScore);
    		//Pitch movement
       if (ball.direction === "pitch") {//condition statement that checks if the direction of the ball is "pitch".
           
-          setTimeout(pitchAnimation, 2000);//runs the pitchAnmiation function on a 2 second delay to match the newPitch function delay
+          //runs the pitchAnmiation function on a 2 second delay to match the newPitch function delay
 
             ball.position.y += randomPitchSpeed;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
           //HR movement
