@@ -28,6 +28,9 @@ var hitAnimation = function(){
 
 var gameStart = function () {//wraps entire game into a function so it can be called when the play ball button is pressed
 
+$("#homerunValue").html(homeRun);
+$("#outValue").html(totalOuts);
+$("#highscoreValue").html(highScore);
 
 //function for a new pitch
   var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
@@ -148,7 +151,7 @@ var gameStart = function () {//wraps entire game into a function so it can be ca
    			ball.draw();//runs the draw function in the ball object
   			ball.move();//runs the move function in the ball object
   			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
-        $("#homerunValue").html("<p>" + homeRun + "</p>");//updates the total number of homeruns to the scoreboard
+        $("#homerunValue").html(homeRun);//updates the total number of homeruns to the scoreboard
         
 
 

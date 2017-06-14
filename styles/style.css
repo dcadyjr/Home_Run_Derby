@@ -70,7 +70,6 @@
 	margin-bottom: -9px;
 	font-weight: bold;
 	font-size: 12px;
-	border: 1px solid red;
 
 }
 #outValue{
@@ -80,6 +79,7 @@
 	margin-left: 5px;
 	width: 35px;
 	font-size: 24px;
+	border: 1px solid black;
 }
 #out{
 	font-family: 'Heebo', sans-serif;
@@ -100,12 +100,15 @@
 	margin-left: 5px;
 	width: 35px;
 	font-size: 24px;
+	border: 1px solid black;
 }
 #highscoreValue{
 	font-family: "Wallpoet", cursive;
 	color: rgb(242, 215, 38);
 	line-height: 50px;
 	font-size: 24px;
+	width: 35px;
+	border: 1px solid black;
 	
 }
 #atbat{
@@ -113,17 +116,21 @@
 	padding-left: 5px;
 	text-align: left;
 	line-height: 8px;
+	margin-left: 10px;
 	
 }
 #highscore{
 	font-family: 'Heebo', sans-serif;
 	padding-left: 5px;
 	text-align: left;
+	margin-left: 10px;
 	
 }
 #name{
 	font-family: "Wallpoet", cursive;
 	line-height: 7px;
+	width: 120px;
+	border: 1px solid black;
 
 }
 .reset {
