@@ -237,18 +237,23 @@
 }
 
 .instructions {
-	width: 400px;
-	height: 200px;
-	background: white;
-	opacity: 1;
-	margin-top: 220px;
-	margin-left: 415px;
+	width: 500px;
+    height: 200px;
+    background: rgb(0, 50, 123);
+    opacity: 1;
+    margin-top: 28px;
+    margin-left: 325px;
+    color: white;
 
 }
 .startbtn {
-	margin-top: 130px;
-	margin-left: 165px;
-	position: absolute;
+	margin-top: 68px;
+    margin-left: -118px;
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    border-radius: 11px;
+	
 }
 
 .blinkerText {
@@ -258,7 +263,18 @@
 @keyframes blinker {
 	50% {opacity: 0; }
 }
+.startimg{
+	width: 50%;
+    height: 35%;
+    margin-left: 270px;
+    margin-top: 100px;
+}
 
+#playerName {
+	margin-left: 183px;
+    margin-top: 20px;
+    width: 127px;
+}
 
 
 
