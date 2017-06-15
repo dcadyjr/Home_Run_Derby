@@ -9,6 +9,8 @@ var highScore = 0;//variable to hold the current high score
 
 
 var hitAnimation = function(){
+    
+
       $("#batter").addClass("swingAnimate");//adds the swingAnimate class to the batter div
 
       window.setTimeout(function() {//sets a delay
@@ -17,7 +19,7 @@ var hitAnimation = function(){
  }
 
 var gameStart = function () {//wraps entire game into a function so it can be called when the play ball button is pressed
-
+      
       var randomNumber = Math.floor(Math.random() * ((-8 - 8)+ 1) + 8);
       var randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
       var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);
@@ -37,7 +39,7 @@ $("#highscoreValue").html(highScore);
       ball.position.y = 570;
 
       drawPitcher();
-      
+
       ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
       
       
@@ -87,7 +89,6 @@ $("#highscoreValue").html(highScore);
     		} else if (ball.direction === "stop") {//conditional statement checks to see if the direction of the ball is "stop"
             ball.position.x -= 0;//makes the ball stop moving on the y axis
             ball.position.y -= 0;//makes the ball stop moving on the x axis
-            console.log(ball.position.x, ball.position.y);
     				newPitch();//this activates the function newPitch.  new pitch starts the next pitch in the game
             //strike movement
     		} else if (ball.direction === "gameOver") {//looks to see if ball direction is set to gameOver
