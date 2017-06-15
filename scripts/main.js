@@ -30,15 +30,17 @@ $("#highscoreValue").html(highScore);
 //function for a new pitch
   var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
   	 ball.direction = "mound";
-     console.log(ball.direction);
-      // ctx.clearRect(ball.position.x -10,ball.position.y -10, 20, 20);
+      
 
      setTimeout(function(){
       ball.position.x = 600;
       ball.position.y = 570;
-      ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
-      console.log(ball.direction);
+
       drawPitcher();
+      
+      ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
+      
+      
       randomNumber = Math.floor(Math.random() * ((-8 - 8)+ 1) + 8);
       randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
       randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);
@@ -85,16 +87,14 @@ $("#highscoreValue").html(highScore);
     		} else if (ball.direction === "stop") {//conditional statement checks to see if the direction of the ball is "stop"
             ball.position.x -= 0;//makes the ball stop moving on the y axis
             ball.position.y -= 0;//makes the ball stop moving on the x axis
-
-        //     
-    				// console.log(ball.direction);
-    				newPitch();//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
+            console.log(ball.position.x, ball.position.y);
+    				newPitch();//this activates the function newPitch.  new pitch starts the next pitch in the game
             //strike movement
     		} else if (ball.direction === "gameOver") {//looks to see if ball direction is set to gameOver
             ball.position.y += 0;//makes the ball stop moving on the y axis
             ball.position.x -= 0;//makes the ball stop moving on the x axis
         } else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
-    				newPitch();//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
+    				newPitch();//this activates the function newPitch.  new pitch starts the next pitch in the game
     		} else if (ball.direction === "mound") {
             
             ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -164,8 +164,8 @@ $("#highscoreValue").html(highScore);
           $(".playResult p").addClass("blinkerText");
         });
 
-        var audioHR = new Audio("media/hitcrowdcheer.mp3");
-        audioHR.play(); 
+            var audioHR = new Audio("media/hitcrowdcheer.mp3");
+            audioHR.play(); 
          
           if (highScore < homeRun) {//conditional that checks if the highScore less than homerun total
           highScore = homeRun;//updates the highscore total with the homeRun total
@@ -179,7 +179,7 @@ $("#highscoreValue").html(highScore);
    			totalOuts = totalOuts += 1;//adds 1 to the Total outs variable which keeps track of how many outs there are
    			$("#outValue").html(totalOuts);//updates the total number of outs to the scoreboard
 
-        var outAudio = new Audio("media/bathitball.mp3");
+            var outAudio = new Audio("media/bathitball.mp3");
             outAudio.play();
 
           $(document).ready(function() {

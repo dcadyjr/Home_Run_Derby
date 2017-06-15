@@ -50,7 +50,8 @@
  .playResult {
  	height: 73px;
 	width: 391px;
-	background-color: black;
+	background-image: url(../images/scoreboardback.jpg);
+	background-size: 100px 100px;
 	margin-top: 20px;
 	clear: both;
 	color: rgb(242, 215, 38);

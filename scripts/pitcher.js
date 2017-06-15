@@ -14,11 +14,11 @@ var drawPitcher = function(){
 	// }
 
 	function animatepitcher(){
-	  ctx.clearRect(600,570,28,50)
-	  console.log(myFrames);
-	  console.log(pitcher.currentframe);
+	  ctx.clearRect(399,300,28,50)
+	  // console.log(myFrames);
+	  // console.log(pitcher.currentframe);
 	  ctx.drawImage(pitcher.img, myFrames[pitcher.currentframe].x, myFrames[pitcher.currentframe].y, myFrames[pitcher.currentframe].width, 
-	myFrames[pitcher.currentframe].height, 600, 570, myFrames[pitcher.currentframe].width, 
+	myFrames[pitcher.currentframe].height, 399, 300, myFrames[pitcher.currentframe].width, 
 	myFrames[pitcher.currentframe].height);
 	  
 	    pitcher.currentframe++;
