@@ -150,7 +150,7 @@ $("#highscoreValue").html(highScore);
    		if (key === 72 && swingTime >= 642 && swingTime <= 644) {//conditional for HR. listens ff the h key is pressed while the ball is between 642 and 644 pixels
         hitAnimation ();//runs hit animation function above
 
-   			ball.direction = "out";//changes the direction property in the ball object to HR
+   			ball.direction = "HR";//changes the direction property in the ball object to HR
    			ball.draw();//runs the draw function in the ball object
   			ball.move();//runs the move function in the ball object
   			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
