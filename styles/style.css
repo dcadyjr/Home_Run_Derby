@@ -4,7 +4,7 @@
 
 #myCanvas {
 	
-	background-image: url(../images/bad_news_stadium.png);
+	background-image: url(../images/field.png);
 	background-size: 1200px 750px;
 	background-repeat: no-repeat;
 	height: 750px;
@@ -57,7 +57,6 @@
 	font-family: 'VT323', monospace;
 	font-size: 40px;
 	text-align: center;
-
 
  }
 

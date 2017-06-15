@@ -6,7 +6,7 @@ var totalOuts = 0;//variable to hold the total number of outs for the player
 var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variable that holds a random number between 400 and 550. used belwo to randomize the depth of "out" hits.
 var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in newPitch function
 var highScore = 0;//variable to hold the current high score
-var randomHrNum = Math.floor(Math.random() * ((5 - 3)+ 1) + 3);
+var randomHrNum = Math.floor(Math.random() * ((4 - 2)+ 1) + 2);
 
 var hitAnimation = function(){
       $("#batter").addClass("swingAnimate");//adds the swingAnimate class to the batter div
@@ -67,11 +67,6 @@ $("#highscoreValue").html(highScore);
    		} else if (ball.direction === "HR") {//condition statement that checks if the direction of the ball is HR(home run)
    				 ball.position.y -= randomHrNum;//moves the ball position by 5 pixels up the y axis as long as direction is HR
            ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
-      
-
-            // window.setTimeout(function() {//sets a delay
-            //     $(".playResult").removeClass("blinkerText");//removes the swingAnimate class from the batter
-            //     }, 2000);//after .5s the class is removed
 
           //out movement
     		} else if (ball.direction === "out") {//conditional statement to check if the direction of the ball is "out"
@@ -118,7 +113,7 @@ $("#highscoreValue").html(highScore);
   		ctx.beginPath();//gets read to draw
   		ctx.fillStyle = 'white';//makdes the fill fo the ball white
   		ctx.arc(ball.position.x, ball.position.y, 3, 0, Math.PI*2);//creates the circle that is the ball
-  		ctx.fill();//fill the circle
+      ctx.fill();//fill the circle
   	},
 
   }
@@ -147,8 +142,6 @@ $("#highscoreValue").html(highScore);
   			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
         $("#homerunValue").html(homeRun);//updates the total number of homeruns to the scoreboard
         
-
-
         $(document).ready(function() {
 
           var quotes = new Array ("HOME RUN!", "IT'S OUTTA HERE!", "SAYONARA!", "TAPE MEASURE SHOT!", "HEY HEY!", "HOLY COW!", "BACK BACK BACK GONE!", "SEE YA!", "KISS IT GOODBYE!", "GOING, GOING, GONE!");
@@ -181,26 +174,23 @@ $("#highscoreValue").html(highScore);
           var a = Math.floor(Math.random() * outQuotes.length);
           $(".playResult").html("<p>" + (outQuotes[a]) + "</p>");//puts the message in the play result part of scoreboard
           
-
         });
-
-
         //puts the message in the play result part of scoreboard
-   		} 	else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
-   			hitAnimation ();//runs hit animation function above
-        ball.direction = "stop";//changes the direction in the ball object to stop
-   			ball.draw();//runs the draw function in the ball object
-  			ball.move();//runs the move function in the ball object
-  			totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
-        $("#outValue").html(totalOuts);//takes the value of the total outs variable and updates the outs total of the scoreboard
+   		} else if (key === 72 && swingTime <= 639 && swingTime > 630 || key === 72 && swingTime === 646) {//listens for the H key to be pressed while the ball is at or between certain pixels
+   			  hitAnimation ();//runs hit animation function above
+          ball.direction = "stop";//changes the direction in the ball object to stop
+   			  ball.draw();//runs the draw function in the ball object
+  			  ball.move();//runs the move function in the ball object
+  			  totalOuts = totalOuts += 1;//adds 1 to the total outs variable which keep track of how many outs there are.
+          $("#outValue").html(totalOuts);//takes the value of the total outs variable and updates the outs total of the scoreboard
         
-        var outAudioFiles = new Array("media/boooo.mp3", "media/crowdboo.mp3")
-        var c = Math.floor(Math.random() * outAudioFiles.length);
+          var outAudioFiles = new Array("media/boooo.mp3", "media/crowdboo.mp3")
+          var c = Math.floor(Math.random() * outAudioFiles.length);
 
-         var strikeAudio = new Audio((outAudioFiles[c]));
+          var strikeAudio = new Audio((outAudioFiles[c]));
           strikeAudio.play(); 
 
-        $(document).ready(function() {
+          $(document).ready(function() {
 
           var strikeQuotes = new Array ("K", "STRIKE!", "THE WHIFF", "BLEW IT BY HIM!", "BAT'S MADE OF SWISS CHEESE", "MADE HIM LOOK SILLY!");
           var b = Math.floor(Math.random() * strikeQuotes.length);
@@ -208,14 +198,12 @@ $("#highscoreValue").html(highScore);
           
         });
 
-
-        
    		} else if (key === 72) {//listens for the h key to be pressed
           hitAnimation ();//runs hit animation
       }
-   })
+    })
 
-  $(".reset").click(function(){//grabs the reset button and put a click listener on it
+    $(".reset").click(function(){//grabs the reset button and put a click listener on it
       reset();//runs the reset function.
   });
 
