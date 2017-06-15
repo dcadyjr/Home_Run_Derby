@@ -7,16 +7,6 @@ var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variabl
 var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in newPitch function
 var highScore = 0;//variable to hold the current high score
 var randomHrNum = Math.floor(Math.random() * ((5 - 3)+ 1) + 3);
-///pitch animation
-// var pitchAnimation = function() { //variable for pitching animation
-
-//         $("#pitcher").addClass("pitchAnimate");//adds the pitchAnimate class to the pitcher div
-        
-//         window.setTimeout(function() {//sets a delay
-//           $("#pitcher").removeClass("pitchAnimate");//removes the pitchAnimate class from the pitcher
-//           }, 500);//after .5s the class is removed
-// } 
- // pitchAnimation ();
 
 var hitAnimation = function(){
       $("#batter").addClass("swingAnimate");//adds the swingAnimate class to the batter div
@@ -53,7 +43,6 @@ $("#highscoreValue").html(highScore);
      
   }
 
-
   //function for game reset
   var reset = function() {//variable for game reset button
     $("#homerunValue").html("");//clears the home runs score from scoreboard
@@ -72,9 +61,6 @@ $("#highscoreValue").html(highScore);
   	move: function() {//start of the funtion that is responsible for the movement of the ball.
    		//Pitch movement
       if (ball.direction === "pitch") {//condition statement that checks if the direction of the ball is "pitch".
-          
-          // drawPitcher();
-          //runs the pitchAnmiation function on a 2 second delay to match the newPitch function delay
 
             ball.position.y += randomPitchSpeed;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
           //HR movement
@@ -229,8 +215,6 @@ $("#highscoreValue").html(highScore);
       }
    })
 
-
-
   $(".reset").click(function(){//grabs the reset button and put a click listener on it
       reset();//runs the reset function.
   });
@@ -240,7 +224,10 @@ $("#highscoreValue").html(highScore);
 
 
 $(".startbtn").click(function() {//grabs the payball button
-    $(".startScreen").hide();//hides the div that appears on game load
+    
+    $(document).ready(function(){
+    $(".startScreen").fadeOut(2000);
+  })
 
     var btnAudio = new Audio("media/bathitball.mp3");
     btnAudio.play();
@@ -248,18 +235,10 @@ $(".startbtn").click(function() {//grabs the payball button
     var name = document.getElementById("playerName").value;//gets the value entered in the name field
     $(".namePTag").append(name);//puts the name into the <p> in the scoreboard
 
-    gameStart();// starts the game function
-
-})
-
-
-   // if (totalOuts === 6) {
-   //          var audioCharge = new Audio("media/Baseball-Hockey-Charge-Stadium-Organ-Theme.mp3");
-   //          audioCharge.play();
-   //        }
-
-
-
+    // gameStart();
+    window.setTimeout(gameStart, 3000);
+    // starts the game function
+});
 
 
 
