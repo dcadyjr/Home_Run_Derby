@@ -1,12 +1,12 @@
 var canvas = document.getElementById("myCanvas");//gets the canvas element that I made on the html
 var ctx = canvas.getContext("2d");//sets the canvas to 2d mode
-var randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);//variable holds a random number between -10 and 10. used below to randomize the direction of hits
+// var randomNumber = Math.floor(Math.random() * ((-9 - 9)+ 1) + 9);//variable holds a random number between -10 and 10. used below to randomize the direction of hits
 var homeRun = 0;//varialbe to hold the number of homeruns for the player
 var totalOuts = 0;//variable to hold the total number of outs for the player
-var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);//variable that holds a random number between 400 and 550. used belwo to randomize the depth of "out" hits.
+//variable that holds a random number between 400 and 550. used belwo to randomize the depth of "out" hits.
 var randomPitchSpeed = 1;//varialbe that holds the speed of the pitch updated in newPitch function
 var highScore = 0;//variable to hold the current high score
-var randomHrNum = Math.floor(Math.random() * ((4 - 2)+ 1) + 2);
+
 
 var hitAnimation = function(){
       $("#batter").addClass("swingAnimate");//adds the swingAnimate class to the batter div
@@ -18,6 +18,11 @@ var hitAnimation = function(){
 
 var gameStart = function () {//wraps entire game into a function so it can be called when the play ball button is pressed
 
+      var randomNumber = Math.floor(Math.random() * ((-8 - 8)+ 1) + 8);
+      var randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
+      var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);
+      var randomHrNum = Math.floor(Math.random() * ((4 - 2)+ 1) + 2);
+
 $("#homerunValue").html(homeRun);
 $("#outValue").html(totalOuts);
 $("#highscoreValue").html(highScore);
@@ -25,15 +30,19 @@ $("#highscoreValue").html(highScore);
 //function for a new pitch
   var newPitch = function (){//starts a function that make a new pitch happen after each hit.  used below in the move function
   	 ball.direction = "mound";
-
-     ctx.clearRect(ball.position.x -10,ball.position.y -10, 20, 20);
+     console.log(ball.direction);
+      // ctx.clearRect(ball.position.x -10,ball.position.y -10, 20, 20);
 
      setTimeout(function(){
+      ball.position.x = 600;
+      ball.position.y = 570;
       ball.direction = "pitch";//changes the value of the direction property in the ball object to pitch
-
+      console.log(ball.direction);
       drawPitcher();
-      randomNumber = Math.floor(Math.random() * ((-10 - 10)+ 1) + 10);
+      randomNumber = Math.floor(Math.random() * ((-8 - 8)+ 1) + 8);
       randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
+      randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);
+      randomHrNum = Math.floor(Math.random() * ((4 - 2)+ 1) + 2); 
 
       ball.position.x = 600;//sets the position of the ball on the x axis to 600
       ball.position.y = 570;//sets the postiion of the ball on the y axis to 570
@@ -74,8 +83,10 @@ $("#highscoreValue").html(highScore);
     				ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
             //stop movement
     		} else if (ball.direction === "stop") {//conditional statement checks to see if the direction of the ball is "stop"
-    				ball.position.y += 0;//makes the ball stop moving on the y axis
-    				ball.position.x -= 0;//makes the ball stop moving on the x axis
+            ball.position.x -= 0;//makes the ball stop moving on the y axis
+            ball.position.y -= 0;//makes the ball stop moving on the x axis
+
+        //     
     				// console.log(ball.direction);
     				newPitch();//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
             //strike movement
@@ -84,7 +95,10 @@ $("#highscoreValue").html(highScore);
             ball.position.x -= 0;//makes the ball stop moving on the x axis
         } else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
     				newPitch();//this activates the function newPitch after 2 seconds.  new pitch starts the next pitch in the game
-    			} 
+    		} else if (ball.direction === "mound") {
+            
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+        }
 
         if (ball.position.y > 646) {//checks to see if the position of the ball on the y axis is greater than 646
     				ball.direction = "stop";//changes the ball direction to stop
@@ -136,7 +150,7 @@ $("#highscoreValue").html(highScore);
    		if (key === 72 && swingTime >= 642 && swingTime <= 644) {//conditional for HR. listens ff the h key is pressed while the ball is between 642 and 644 pixels
         hitAnimation ();//runs hit animation function above
 
-   			ball.direction = "HR";//changes the direction property in the ball object to HR
+   			ball.direction = "out";//changes the direction property in the ball object to HR
    			ball.draw();//runs the draw function in the ball object
   			ball.move();//runs the move function in the ball object
   			homeRun = homeRun += 1;//adds 1 to the homerun variable which keeps tracks of how many homeruns there are.
