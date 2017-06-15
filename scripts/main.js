@@ -19,7 +19,7 @@ var hitAnimation = function(){
  }
 
 var gameStart = function () {//wraps entire game into a function so it can be called when the play ball button is pressed
-      
+
       var randomNumber = Math.floor(Math.random() * ((-8 - 8)+ 1) + 8);
       var randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
       var randomNumberY = Math.floor(Math.random() * ((400 - 550) +1) + 550);
@@ -245,11 +245,36 @@ $(".startbtn").click(function() {//grabs the payball button
 
 
 
+////////// FOR API STUFF//////////////////////////////
+
+// var teamNames = [];
+// var teamCodes = [];
+// var a;
+
+// $.ajax({
+//   method: "GET",
+//   url: "http://mlb.com/lookup/json/named.team_all.bam?sport_code=%27mlb%27&active_sw=%27Y%27&all_star_sw=%27N%27",
+
+//   success: function(response) {
+
+//     a = response; 
+//     for (var i = 0; i < a.team_all.queryResults.row.length; i++) {
+
+//       teamCodes = a.team_all.queryResults.row[i].team_code;
+//       teamNames = a.team_all.queryResults.row[i].name_display_full;
+//         console.log(teams, teamNames);
+
+//         var ul = $("<ul>");
+//         ul.append("<li>" + teamNames+ "</li>");
+//         $("#teams").append(ul);
+
+//     }
+//   }
+
+// })
+
+// url: "http://mlb.mlb.com/shared/properties/style/" + teamCodes + ".json",
 
 
-
-
-
-
-
+//ul.append("<li>" + teamNames+ "</li>");
 
