@@ -30,36 +30,44 @@ var ball = {//variable ball that holds that is an object with properties for the
             ball.position.y += randomPitchSpeed;//moves the ball position by 1 pixel down the y axis as long as ball direction is pitch
           //HR movement
       } else if (ball.direction === "HR") {//condition statement that checks if the direction of the ball is HR(home run)
-           ball.position.y -= randomHrNum;//moves the ball position by 5 pixels up the y axis as long as direction is HR
-           ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
+           
+            hitDirection();
 
           //out movement
         } else if (ball.direction === "out") {//conditional statement to check if the direction of the ball is "out"
-            ball.position.y -= randomHrNum;//moves the position of the ball up the y axis by 5
-            ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
+            
+            hitDirection();
+
             //stop movement
         } else if (ball.direction === "stop") {//conditional statement checks to see if the direction of the ball is "stop"
-            ball.position.x -= 0;//makes the ball stop moving on the y axis
-            ball.position.y -= 0;//makes the ball stop moving on the x axis
+            
+            stopDirection();
+
             newPitch();//this activates the function newPitch.  new pitch starts the next pitch in the game
             //strike movement
         } else if (ball.direction === "gameOver") {//looks to see if ball direction is set to gameOver
-            ball.position.y += 0;//makes the ball stop moving on the y axis
-            ball.position.x -= 0;//makes the ball stop moving on the x axis
+            
+            stopDirection();
+
         } else if (ball.direction === "strike"){//conditional statement checks to see if the ball direction is strike
+            
             newPitch();//this activates the function newPitch.  new pitch starts the next pitch in the game
+
         } else if (ball.direction === "mound") {
             
             ctx.clearRect(0,0,canvas.width,canvas.height);
         }
 
         if (ball.position.y > 646) {//checks to see if the position of the ball on the y axis is greater than 646
+            
             ball.direction = "stop";//changes the ball direction to stop
             ball.position.x = 600;//sets the x position of the ball to 600
             ball.position.y = 570;//sets the y position of the ball to 570
             totalOuts = totalOuts += 1;//increases the total outs by 1
-            $("#outValue").html(totalOuts);
-            $(".playResult").html("<p>OUT!!!</p>");
+            
+            updateScoreboard("#outValue", totalOuts);
+            updateScoreboard(".playResult", "<p>OUT!!!</p>")
+            
         } 
   
         if (ball.direction === "out" && ball.position.y > (randomNumberY - 5) && ball.position.y < (randomNumberY + 5)) {//checks if the ball direction is out and if the ball postion y is greater than or less than a radnom number between 400 and 550
@@ -83,7 +91,7 @@ var ball = {//variable ball that holds that is an object with properties for the
       ctx.fill();//fill the circle
     },
 
-  }
+}
 
 var gameStart = function () {//wraps entire game into a function so it can be called when the play ball button is pressed
 
@@ -110,7 +118,18 @@ $(".startbtn").click(function() {//grabs the payball button
     window.setTimeout(gameStart, 3000);
     // starts the game function
 });
-    
+
+var hitDirection = function(){
+           ball.position.y -= randomHrNum;//moves the ball position by 5 pixels up the y axis as long as direction is HR
+           ball.position.x += randomNumber;//moves the ball by a random number between -10 and 10 across the x axis. this randomizes which side of the field the ball is hit to.
+}
+
+var stopDirection = function(){
+
+            ball.position.x -= 0;//makes the ball stop moving on the y axis
+            ball.position.y -= 0;//makes the ball stop moving on the x axis
+}
+
 var generateRandom = function(){
       randomNumber = Math.floor(Math.random() * ((-8 - 8)+ 1) + 8);//variable holds a random number between -8 and 8. used below to randomize the direction of hits
       randomPitchSpeed = Math.floor(Math.random() * ((2 - 1) +1) +1);
@@ -244,7 +263,7 @@ document.addEventListener("keydown", function(){//adds the event listener lookin
       } else if (key === 72) {//listens for the h key to be pressed
           hitAnimation ();//runs hit animation
       }
-    })
+})
 
 var batHitSound = function(){
 
