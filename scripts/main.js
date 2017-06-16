@@ -265,7 +265,7 @@ $(".startbtn").click(function() {//grabs the payball button
 //         console.log(teams, teamNames);
 
 //         var ul = $("<ul>");
-//         ul.append("<li>" + teamNames+ "</li>");
+//         ul.append("<li><a href="'http://mlb.mlb.com/shared/properties/style/bal.json'">" + teamNames + "</a></li>");
 //         $("#teams").append(ul);
 
 //     }
@@ -273,8 +273,8 @@ $(".startbtn").click(function() {//grabs the payball button
 
 // })
 
-// url: "http://mlb.mlb.com/shared/properties/style/" + teamCodes + ".json",
+// url: <a href="http://mlb.mlb.com/shared/properties/style/bal.json">
 
 
-//ul.append("<li>" + teamNames+ "</li>");
+// ul.append("<li>" + teamNames+ "</li>");
 
